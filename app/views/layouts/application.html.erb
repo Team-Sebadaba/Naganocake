@@ -11,6 +11,89 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container">
+          <a class=navbar-brand href="/">
+            ながのCAKE(ロゴに置き換え予定)
+          </a>
+
+          <% if user_signed_in? %>
+          <div class="collapse navbar-collapse justify-content-around" id="navbarNav4">
+            <span class="navbar-text">
+              ようこそ、<%= current_user.name %>さん！
+            </span>
+          </div>
+          <% end %>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="navbar-collapse collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to customers_path, class: "nav-link text-dark" do %>
+                <i class="fa-solid fa-user"></i>
+                マイページ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to items_path, class: "nav-link text-dark" do %>
+                <i class="fa-solid fa-cake-slice"></i>
+                商品一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to cart_items_path, class: "nav-link text-dark" do %>
+                <i class="fa-solid fa-cart-shopping"></i>
+                カート
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                ログアウト
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to about_path, class: "nav-link text-dark" do %>
+                <i class="fa-solid fa-asterisk"></i>
+                About
+                <% end %>
+              </li>
+              <li>
+                <%= link_to items_path, class: "nav-link text-dark" do %>
+                <i class="fa-solid fa-cake-slice"></i>
+                商品一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path, class: "nav-link text-dark" do %>
+                <i class="fa-solid fa-user-plus"></i>
+                新規登録
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_session_path, class: "nav-link text-dark" do %>
+                <i class="fa-solid fa-right-to-bracket"></i>
+                ログイン
+                <% end %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="border border-secondary"></div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <div class="container mt-5"></div>
+    </footer>
   </body>
 </html>
