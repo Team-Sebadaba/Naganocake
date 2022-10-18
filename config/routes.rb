@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 }
   root :to => "homes#top"
   get '/about' => 'homes#about'
+  # get '/admin' => 'homes#top'
   
   resources :items, only: [:index, :show]
   resources :registrations, only: [:new, :create]
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   resources :destinations, only: [:index, :edit, :create, :update, :destroy]
 
   namespace :admin do
+    root :to => 'homes#top'
     resources :sessions, only: [:new, :create, :destroy]
     resources :homes, only: [:top]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
