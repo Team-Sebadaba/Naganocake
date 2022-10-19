@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
   def top
-    @customers = Customer.all.page(params[:page])
+    @details = Detail.all.page(params[:page])
   end
 end
