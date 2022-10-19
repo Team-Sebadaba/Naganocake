@@ -7,22 +7,32 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-  root :to => "homes#top"
-  get '/about' => 'homes#about'
+  # トップページ追加後に編集する
+  　# root :to => "public/homes#top"
+
+
+  # get '/about' => 'public/homes#about'
   # get '/admin' => 'homes#top'
-  
+
+  get "/customers" => "public/customers#show"
+  get "/customers/infomation/edit" => "public/customers#edit"
+  patch "/customers/infomation" => "public/customers#update"
+  get "/customers/confirm" => "public/customers#confirm"
+  patch "customers/withdraw" => "public/customers#withdraw"
+
   resources :items, only: [:index, :show]
-  resources :registrations, only: [:new, :create]
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
-  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+  # resources :registrations, only: [:new, :create]
+  # resources :sessions, only: [:new, :create, :destroy]
+  # resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
+  resources :cart_items, only: [:index, :update, :destroy, :create]
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   resources :destinations, only: [:index, :edit, :create, :update, :destroy]
 
   namespace :admin do
     root :to => 'homes#top'
-    resources :sessions, only: [:new, :create, :destroy]
-    # resources :homes, only: [:top]
+    # resources :sessions, only: [:new, :create, :destroy]
+    resources :homes, only: [:top]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
