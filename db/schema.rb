@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_051810) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "password", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_furigana", default: "", null: false
