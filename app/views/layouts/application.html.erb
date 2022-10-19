@@ -21,7 +21,7 @@
           <% if customer_signed_in? %>
           <div class="collapse navbar-collapse justify-content-around" id="navbarNav4">
             <span class="navbar-text">
-              ようこそ、<%= current_user.name %>さん！
+              ようこそ、<%= current_customer.last_name %>さん！
             </span>
           </div>
           <% end %>
@@ -34,7 +34,7 @@
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
               <li>
-                <%= link_to customers_path(current_user), class: "nav-link text-dark" do %>
+                <%= link_to customers_path, class: "nav-link text-dark" do %>
                 <i class="fa-solid fa-user"></i>
                 マイページ
                 <% end %>
@@ -52,7 +52,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
+                <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark" do %>
                 <i class="fa-solid fa-right-from-bracket"></i>
                 ログアウト
                 <% end %>
@@ -65,7 +65,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
+                <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark" do %>
                 <i class="fa-solid fa-right-from-bracket"></i>
                 ログアウト
                 <% end %>
