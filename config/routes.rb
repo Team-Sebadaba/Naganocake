@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
 
   get '/about' => 'public/homes#about'
-  # get '/admin' => 'homes#top'
 
   get "/customers" => "public/customers#show"
   get "/customers/infomation/edit" => "public/customers#edit"
@@ -32,9 +31,8 @@ Rails.application.routes.draw do
   resources :destinations, only: [:index, :edit, :create, :update, :destroy]
 
   namespace :admin do
-
-    # resources :sessions, only: [:new, :create, :destroy]
-    resources :homes, only: [:top]
+    root :to => 'homes#top'
+    # resources :homes, only: [:top]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
