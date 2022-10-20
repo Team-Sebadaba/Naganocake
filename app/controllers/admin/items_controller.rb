@@ -19,12 +19,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])  
   end
   
   private
   # ストロングパラメータ
   def item_params
-    params.require(:item).permit(:image, :item_name, :item_introduction, :non_taxed)
+    params.require(:item).permit(:image, :item_name, :item_introduction, :genre_id, :non_taxed, :is_active)
   end
   
 end
