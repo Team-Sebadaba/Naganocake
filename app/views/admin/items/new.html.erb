@@ -6,6 +6,7 @@
   <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
     <dev class="field colspan mr-5">
       <h4>商品画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
     </dev>
     <div class="field colspan mr-5">
       <h4>商品名</h4>
@@ -17,6 +18,7 @@
     </div>
     <div class="field colspan mr-5">
       <h4>ジャンル</h4>
+      <!--%= f.collection_select (:genre_id, Genre.find(:all), :id, :name) %>-->
     </div>
     <div class="field colspan mr-5">
       <h4>税抜価格</h4>
@@ -24,8 +26,10 @@
     </div>
     <div class="field colspan mr-5">
       <h4>販売ステータス</h4>
+      <%= f.check_box :is_active %>販売中
+      <%= f.check_box :is_active %>販売中止
     </div>
-     <div class= "field colspan">
+     <div class= "action">
       <%= f.submit '新規登録', class:"btn btn-success" %>
      </div>
   <% end %>

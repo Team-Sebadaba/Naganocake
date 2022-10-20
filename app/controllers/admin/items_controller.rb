@@ -4,12 +4,14 @@ class Admin::ItemsController < ApplicationController
   end
   
   def create
-    item = Item.new(item_params)
-    item.save
-    redirect_to '/admin/items'
+    @item = Item.new(item_params)
+    @item.save
+    redirect_to admin_items_path
   end
 
   def index
+    @items = Item.all
+    @item = Item.new
   end
 
   def show
@@ -21,7 +23,7 @@ class Admin::ItemsController < ApplicationController
   private
   # ストロングパラメータ
   def item_params
-    params.require(:item).permit(:item_name, :item_introduction, :non_taxed)
+    params.require(:item).permit(:image, :item_name, :item_introduction, :non_taxed)
   end
   
 end
