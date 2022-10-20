@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 }
 
   # トップページ追加後に編集する
-  　# root :to => "public/homes#top"
-  
-  
-  # get '/about' => 'public/homes#about'
+  # 　root :to => "public/homes#top"
+
+
+  get '/about' => 'public/homes#about'
   # get '/admin' => 'homes#top'
 
   get "/customers" => "public/customers#show"
