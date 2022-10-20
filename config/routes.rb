@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
   # トップページ追加後に編集する
-  　# root :to => "public/homes#top"
-  
-  
+   # root :to => "public/homes#top"
+
+
   # get '/about' => 'public/homes#about'
   # get '/admin' => 'homes#top'
 
