@@ -12,24 +12,23 @@
     </tr>
   </thead>
   <tbody>
-   <% @details.each do |details| %>
+   <% @orders.each do |order| %>
     <tr>
       <td>
-       <%= link_to details.created_at, admin_item_path(admin.items.id)  %>
+       <%= link_to order.created_at, admin_item_path(admin.items.id) %>
       </td>
       <td>
-       <!--注文idで注文テーブル→　会員id→　会員テーブルの中の名前を持ってきたい-->
-       <%= details.name(last_name) %>
+       <%= order.customer.last_name + first_name %>
       </td>
       <td>
-       <%= details.amount %>
+       <%= order.detail.amount %>
       </td>
       <td>
-       <%= details.item_status %>
+       <%= order.detail.item_status %>
       </td>
     </tr>
    <% end %>
   </tbody>
  </table>
- <%= paginate @details %>
+ <%= paginate @orders %>
 </div>
