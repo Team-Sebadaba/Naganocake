@@ -1,0 +1,12 @@
+<h2>マイページ</h2>
+ <h4>登録情報</h4> <%= link_to "編集する" %>
+
+ 氏名<%= @customer.last_name %> <%= @customer.first_name %>
+ カナ<%= @customer.last_furigana %> <%= @customer.first_furigana %>
+ 郵便番号<%= @customer.postal %>
+ 住所<%= @customer.address %>
+ 電話番号<%= @customer.tel %>
+ メールアドレス<%= @customer.email %>
+
+ <h4>配送先</h4> <%= link_to "一覧を見る" %>
+ <h4>注文履歴</h4> <%= link_to "一覧を見る" %>
