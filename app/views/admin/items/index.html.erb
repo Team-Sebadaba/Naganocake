@@ -17,7 +17,8 @@
          <%= item.id %>
         </td>
         <td>
-         <%= link_to item.item_name, admin_item_path(admin.items.id) %>
+         <!--#最後の@items.idsのsがつくのはなぜ？-->
+         <%= link_to item.item_name, admin_item_path(@items.ids) %>
         </td>
         <td>
          <%= item.non_taxed %>
@@ -26,7 +27,7 @@
          <%= item.genre_id %>
         </td>
         <td>
-         <%if item.is_active == FALSE %>
+         <%if item.is_active == true %>
           <h4 class="text-success">販売中</h4>
          <% else %>
           <h4 class="text-black-50">販売停止中</h4>
