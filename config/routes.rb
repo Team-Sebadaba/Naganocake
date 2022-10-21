@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -8,10 +9,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-  # トップページ追加後に編集する
-  # root :to => "public/homes#top"
-
-
+  root :to => "public/homes#top"
   get '/about' => 'public/homes#about'
 
   get "/customers" => "public/customers#show"
