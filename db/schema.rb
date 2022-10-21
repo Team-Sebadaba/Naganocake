@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_20_144012) do
+ActiveRecord::Schema.define(version: 2022_10_21_052603) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_10_20_144012) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "password", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_furigana", default: "", null: false
@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 2022_10_20_144012) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "payment"
-    t.integer "order_status"
+    t.integer "payment", default: 0
+    t.integer "order_status", default: 0
     t.integer "postage"
     t.integer "total"
     t.string "shipping_postal"

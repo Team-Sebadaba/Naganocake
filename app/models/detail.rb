@@ -4,7 +4,4 @@ class Detail < ApplicationRecord
 
   enum item_status: { impossible_making: 0, waiting: 1, maiking: 2, complete: 3 }
 
-  # Orderのモデルが出来たら以下の記述を加える。
-  # has_many :, dependent: :destroy
-
 end
