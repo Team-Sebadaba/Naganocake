@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -8,11 +9,11 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-  # トップページ追加後に編集する
-  # 　root :to => "public/homes#top"
+  root :to => "public/homes#top"
 
 
   get '/about' => 'public/homes#about'
+
   # get '/admin' => 'homes#top'
 
   get "/customers" => "public/customers#show"
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
   # resources :registrations, only: [:new, :create]
-
+  
   # resources :sessions, only: [:new, :create, :destroy]
   # resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
   resources :cart_items, only: [:index, :update, :destroy, :create]
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
   resources :destinations, only: [:index, :edit, :create, :update, :destroy]
 
   namespace :admin do
-
+    root :to => 'homes#top'
     # resources :sessions, only: [:new, :create, :destroy]
     resources :homes, only: [:top]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
