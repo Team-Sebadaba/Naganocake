@@ -1,0 +1,51 @@
+<div class="container my-5">
+  <div class="row">
+
+    <div class="col-md-9">
+
+      <div class="row">
+        <div class="col-md-4 my-5">
+          <img src="assets/chocolatecake3.jpg" alt="">
+          <%#= image_tag @item(160,120) %>
+        </div>
+        <div class="col-md-5 my-5 bg-dark">
+          <h4><%#= @item.name %></h4>
+          <p><%#= @item.introduction %></p>
+          <span>¥<%#= @item.non_taxtd %></span>
+
+          <table>
+            <tr>
+            <%# if @item.is_active == TRUE %>
+
+              <%#= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
+              <td>
+                <%#= f.label :quantity, "個数選択" %>
+                <%#= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+              </td>
+              <td>
+                <%#= f.hidden_field :item_id, :value => @item.id %>
+                <%#= f.submit "カートに入れる", class: "btn btn-succsess" %>
+              </td>
+              <%# end %>
+
+            <%# end %>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div></div>
+
+    </div>
+
+    <div class="col-md-3">
+      <ul class="list-group">
+        <h5>ジャンル一覧</h5>
+        <%#= @genres.each do |genre| %>
+          <%#li class="list-group-item"><%= genre.name %><%#/li>
+        <%# end %>
+      </ul>
+    </div>
+
+  </div>
+</div>
