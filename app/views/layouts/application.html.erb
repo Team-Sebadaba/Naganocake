@@ -57,6 +57,7 @@
                 ログアウト
                 <% end %>
               </li>
+
             <% elsif admin_signed_in? %>
               <li>
                 <%= link_to items_path, class: "nav-link text-dark" do %>
@@ -95,6 +96,7 @@
                 ログイン
                 <% end %>
               </li>
+
             <% end %>
             </ul>
           </div>
