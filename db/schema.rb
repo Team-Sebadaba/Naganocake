@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_10_19_021312) do
+ActiveRecord::Schema.define(version: 2022_10_20_144012) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_10_19_021312) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "password", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_furigana", default: "", null: false
@@ -65,6 +64,29 @@ ActiveRecord::Schema.define(version: 2022_10_19_021312) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "item_name"
+    t.text "item_introduction"
+    t.boolean "is_active", default: true
+    t.integer "non_taxed"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "payment"
+    t.integer "order_status"
+    t.integer "postage"
+    t.integer "total"
+    t.string "shipping_postal"
+    t.string "shipping_address"
+    t.string "shipping_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
