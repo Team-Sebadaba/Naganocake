@@ -1,4 +1,5 @@
 class Public::DestinationsController < ApplicationController
+
   def index
     @destination = Destination.new
     @customer = Customer.find(current_customer.id)
