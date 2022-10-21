@@ -3,6 +3,7 @@ class Admin::CustomersController < ApplicationController
     @customers = Customer.all.page(params[:page])
   end
 
+
   def show
     @customer = Customer.find(params[:id])
   end
