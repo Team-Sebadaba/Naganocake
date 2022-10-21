@@ -1,2 +1,48 @@
-<h1>Public::Destinations#index</h1>
-<p>Find me in app/views/public/destinations/index.html.erb</p>
+<h2>配送先登録/一覧</h2>
+<%= form_with model: @destination, url: '/destinations', method: :post, local: true do |f| %>
+
+　<div class="field">
+   <%= f.label :郵便番号 %>
+   <em>(ハイフンなし)</em>
+   <%= f.text_field :postal %>
+  </div>
+
+  <div class="field">
+   <%= f.label :住所 %>
+   <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+   <%= f.label :宛名 %>
+   <%= f.text_field :name %>
+  </div>
+
+　<%= f.submit "新規登録", class: "btn btn-success" %>
+
+  <% end %>
+
+  <div class>
+    <table>
+      <thead>
+        <tr>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @destinations.each do |destination| %>
+         <tr>
+           <td><%= destination.postal %></td>
+           <td><%= destination.address %></td>
+           <td><%= destination.name %></td>
+           <td><%= link_to "編集する", destinations_path(destination.id), class:"btn btn-success" %></td>
+           <td><%= link_to "削除する", class:"btn btn-danger", method: :delete  %></td>
+         </tr>
+        <% end %>
+
+
+      </tbody>
+
+    </table>
+  </div>

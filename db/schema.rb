@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_20_144012) do
+ActiveRecord::Schema.define(version: 2022_10_21_082021) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_10_20_144012) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "password", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_furigana", default: "", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2022_10_20_144012) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.string "postal", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
   end
 
   create_table "details", force: :cascade do |t|
@@ -74,19 +83,6 @@ ActiveRecord::Schema.define(version: 2022_10_20_144012) do
     t.text "item_introduction"
     t.boolean "is_active", default: true
     t.integer "non_taxed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "payment"
-    t.integer "order_status"
-    t.integer "postage"
-    t.integer "total"
-    t.string "shipping_postal"
-    t.string "shipping_address"
-    t.string "shipping_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

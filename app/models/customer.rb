@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+    has_many :destinations
 
     validates :last_name, presence: true
     validates :first_name, presence: true
@@ -12,7 +13,7 @@ class Customer < ApplicationRecord
     validates :postal, presence: true
     validates :address, presence: true
     validates :tel, presence: true
-     validates :email, presence: true
+    validates :email, presence: true
 
 
 end

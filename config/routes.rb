@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  namespace :public do
-    get 'destinations/index'
-    get 'destinations/edit'
-  end
-=======
- 
->>>>>>> origin/develop
+
+  # namespace :public do
+    # get 'destinations/index'
+    # get 'destinations/edit'
+  # end
+
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -23,6 +22,12 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
   # get '/admin' => 'homes#top'
 
+  get "/destinations" => "public/destinations#index"
+  get "/destinations/:id/edit" => "public/destinations#edit"
+  post "/destinations" => "public/destinations#create"
+  patch "/destinations/:id" => "public/destinations#update"
+  delete "/destinations/:id" => "public/destinations#destroy"
+
   get "/customers" => "public/customers#show"
   get "/customers/infomation/edit" => "public/customers#edit"
   patch "/customers/infomation" => "public/customers#update"
@@ -31,7 +36,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
   # resources :registrations, only: [:new, :create]
-  
+
   # resources :sessions, only: [:new, :create, :destroy]
   # resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
   resources :cart_items, only: [:index, :update, :destroy, :create]
