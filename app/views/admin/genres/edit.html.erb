@@ -1,0 +1,31 @@
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="container">
+ <div class="row">
+  <h6 class="mb-5">ジャンル編集</h6>
+ </div>
+ <div class="row">
+   <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
+   <div class="form-group">
+    <div class="form-inline">
+     <div class="field colspan mr-5" >
+      <h8>ジャンル名</h8>
+     </div>
+     <div class="field colspan mr-5" >
+      <%= f.text_field :name %>
+     </div>
+     <div class= "field colspan">
+      <%= f.submit '変更を保存', class:"btn btn-success" %>
+     </div>
+    </div>
+   </div>
+   <% end %>
+ </div>
+</div>
