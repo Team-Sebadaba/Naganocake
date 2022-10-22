@@ -50,17 +50,16 @@
      <div class="field" >
       <h8><%= f.text_field :email %></h8>
      </div>
-     <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-       <label class="form-check-label" for="exampleRadios1">
-        有効
-       </label>
-     </div>
-     <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-       <label class="form-check-label" for="exampleRadios2">
-        退会
-       </label>
+     <div class="done">
+          <%= form.label :done %>
+      <div>
+          <%= form.radio_button :done, true %>
+          <%= form.label :done, '有効', value: true %>
+      </div>
+      <div>
+          <%= form.radio_button :done, false %>
+          <%= form.label :done, '退会', value: false %>
+      </div>
      </div>
      <div class= "field">
       <%= f.submit '変更を保存', class:"btn btn-success" %>

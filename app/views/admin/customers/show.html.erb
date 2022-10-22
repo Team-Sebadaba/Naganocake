@@ -20,7 +20,7 @@
     <h6><%= @customer.address %></h6>
     <h6><%= @customer.tel %></h6>
     <h6><%= @customer.email %></h6>
-    <h6><% if @customer.is_deleted == FALSE %>
+    <h6><% if @customer.is_deleted == false %>
          <h6 class="text-success">有効</h6>
         <% else %>
          <h6 class="text-black-50">退会</h6>

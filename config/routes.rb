@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'orders/new'
+    get 'orders/index'
+    get 'orders/show'
+  end
   # namespace :public do
     # get 'destinations/index'
     # get 'destinations/edit'
@@ -19,7 +24,6 @@ Rails.application.routes.draw do
 
 
   get '/about' => 'public/homes#about'
-  # get '/admin' => 'homes#top'
 
    get '/customers' => 'public/customers#show'
    get '/customers/infomation/edit' => 'public/customers#edit', as: 'edit_customer'
