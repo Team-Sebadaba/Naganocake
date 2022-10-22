@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-  end
+  # namespace :public do
+    # get 'orders/new'
+    # get 'orders/index'
+    # get 'orders/show'
+  # end
   # namespace :public do
     # get 'destinations/index'
     # get 'destinations/edit'
@@ -38,15 +38,16 @@ Rails.application.routes.draw do
    get '/destinations/:id/edit' => 'public/destinations#edit', as: 'edit_destination'
    delete '/destinations/:id' => 'public/destinations#destroy', as: 'destroy_destination'
 
-#   resources :items, only: [:index, :show]
-   get '/items' => 'public/items#index'
-   get '/items/:id' => 'public/items#show'
+   get '/orders' => 'public/orders#index'
+   get 'orders/:id' => 'public/orders#show'
+
+  resources :items, only: [:index, :show]
 
   # resources :sessions, only: [:new, :create, :destroy]
   # resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
   resources :cart_items, only: [:index, :update, :destroy, :create]
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-  resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+  # resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
 # resources :destinations, only: [:index, :edit, :create, :update, :destroy]
 
   namespace :admin do
