@@ -10,7 +10,14 @@ Rails.application.routes.draw do
 }
 
   root :to => "public/homes#top"
+
+
   get '/about' => 'public/homes#about'
+<<<<<<< HEAD
+=======
+
+  # get '/admin' => 'homes#top'
+>>>>>>> origin/develop
 
   get "/customers" => "public/customers#show"
   get "/customers/infomation/edit" => "public/customers#edit"
@@ -18,7 +25,9 @@ Rails.application.routes.draw do
   get "/customers/confirm" => "public/customers#confirm"
   patch "customers/withdraw" => "public/customers#withdraw"
 
-  resources :items, only: [:index, :show]
+  # resources :items, only: [:index, :show]
+  get "/items" => "public/items#index"
+  get "/items/:id" => "public/items#show"
   # resources :registrations, only: [:new, :create]
 
   # resources :sessions, only: [:new, :create, :destroy]
@@ -30,8 +39,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to => 'homes#top'
-    # resources :homes, only: [:top]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    # resources :sessions, only: [:new, :create, :destroy]
+    resources :homes, only: [:top]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update] do
