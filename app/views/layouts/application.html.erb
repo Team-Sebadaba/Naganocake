@@ -29,7 +29,7 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
+          <div class="row">
           <div class="navbar-collapse collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
@@ -57,16 +57,33 @@
                 ログアウト
                 <% end %>
               </li>
-
             <% elsif admin_signed_in? %>
               <li>
-                <%= link_to items_path, class: "nav-link text-dark" do %>
+                <%= link_to admin_items_path, class: "nav-link text-dark" do %>
                 <i class="fas fa-gifts"></i>
                 商品一覧
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark" do %>
+                <%= link_to admin_customers_path, class: "nav-link text-dark" do %>
+                <i class="fas fa-users"></i>
+                会員一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_root_path, class: "nav-link text-dark" do %>
+               <i class="fas fa-tasks"></i>
+                注文履歴一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_genres_path, class: "nav-link text-dark" do %>
+                <i class="fas fa-birthday-cake"></i>
+                ジャンル一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark" do %>
                 <i class="fas fa-sign-out-alt"></i>
                 ログアウト
                 <% end %>
@@ -96,9 +113,18 @@
                 ログイン
                 <% end %>
               </li>
-
+              <li>
+                <%= link_to admin_session_path, class: "nav-link text-dark" do %>
+                .
+                <% end %>
+              </li>
             <% end %>
             </ul>
+          </div></div>
+          <div class="row">
+              <!--<div class="search_box">-->
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <!--<button type = "submit"><i class="fa-solid fa-magnifying-glass fa-flip-horizontal" type="submit"></i></button>-->
           </div>
         </div>
       </nav>
@@ -110,6 +136,7 @@
       </div>
     </main>
     <footer>
+      <div class="border border-secondary"></div>
       <div class="container mt-5"></div>
     </footer>
   </body>
