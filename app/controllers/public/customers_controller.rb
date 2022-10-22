@@ -15,7 +15,7 @@ class Public::CustomersController < ApplicationController
 
 #下記は退会確認画面用
      @customer_is_deleted = current_customer
-     if @customer_is_deleted.update(params[:is_deleted][:TRUE])
+     if @customer_is_deleted.update(params[:is_deleted][:true])
       redirect_to root_path
      end
  end
