@@ -24,7 +24,6 @@ Rails.application.routes.draw do
 
 
   get '/about' => 'public/homes#about'
-  # get '/admin' => 'homes#top'
 
    get '/customers' => 'public/customers#show'
    get '/customers/infomation/edit' => 'public/customers#edit', as: 'edit_customer'
