@@ -9,15 +9,15 @@ class Public::CustomersController < ApplicationController
  end
 
  def update
-     @customer = Current.find(params[:id])
+     @customer = current_customer
      @customer.update(customer_params)
-     redirect_to customer_path(resource)
+     redirect_to customers_path
  end
 
   private
 
    def customer_params
-      params.require(:customer).permit(:sign_up, keys: [:last_name, :first_name, :last_furigana, :first_furigana, :postal, :address, :tel])
+      params.require(:customer).permit(:last_name, :first_name, :last_furigana, :first_furigana, :postal, :address, :tel, :email)
    end
 
 end

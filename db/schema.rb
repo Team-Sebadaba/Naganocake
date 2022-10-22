@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 2022_10_21_064234) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "destinations", force: :cascade do |t|
+    t.string "postal", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
+  end
+
   create_table "details", force: :cascade do |t|
     t.integer "order_id"
     t.integer "item_id"
@@ -106,6 +115,8 @@ ActiveRecord::Schema.define(version: 2022_10_21_064234) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
+=======
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "payment", default: 0
@@ -122,4 +133,5 @@ ActiveRecord::Schema.define(version: 2022_10_21_064234) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 
+>>>>>>> origin/develop
 end
