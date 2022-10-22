@@ -1,14 +1,23 @@
 class Public::CustomersController < ApplicationController
 
  def show
-   @customer = current_customer
+     @customer = current_customer
  end
 
+ def edit
+     @customer = current_customer
+ end
 
-# private
+ def update
+     @customer = current_customer
+     @customer.update(customer_params)
+     redirect_to customers_path
+ end
 
-  # def customer_params
-    # params.require(:customer).permit(:sign_up, keys: [:last_name, :first_name, :last_furigana, :first_furigana, :postal, :address, :tel])
-  # end
+  private
+
+   def customer_params
+      params.require(:customer).permit(:last_name, :first_name, :last_furigana, :first_furigana, :postal, :address, :tel, :email)
+   end
 
 end
