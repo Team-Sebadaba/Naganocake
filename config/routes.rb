@@ -33,7 +33,9 @@ Rails.application.routes.draw do
    get '/destinations/:id/edit' => 'public/destinations#edit', as: 'edit_destination'
    delete '/destinations/:id' => 'public/destinations#destroy', as: 'destroy_destination'
 
-  resources :items, only: [:index, :show]
+#   resources :items, only: [:index, :show]
+   get '/items' => 'public/items#index'
+   get '/items/:id' => 'public/items#show'
 
   # resources :sessions, only: [:new, :create, :destroy]
   # resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
