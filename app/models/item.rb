@@ -4,6 +4,10 @@ class Item < ApplicationRecord
   has_many   :details, dependent: :destroy
   has_one_attached :image
 
+  def with_tax_price
+    (price * 1.1).floor
+  end
+
   def get_image
     unless image.attached?(width, height)
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
