@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 }
 
   root :to => "public/homes#top"
+
+
   get '/about' => 'public/homes#about'
+
   # get '/admin' => 'homes#top'
 
   get "/customers" => "public/customers#show"
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
   # resources :registrations, only: [:new, :create]
-  
+
   # resources :sessions, only: [:new, :create, :destroy]
   # resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
   resources :cart_items, only: [:index, :update, :destroy, :create]
