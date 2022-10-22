@@ -17,16 +17,16 @@
          <%= item.id %>
         </td>
         <td>
-         <%= link_to item.item_name, admin_item_path(admin.items.id) %>
+         <%= link_to item.item_name, admin_item_path(item.id) %>
         </td>
         <td>
          <%= item.non_taxed %>
         </td>
         <td>
-         <%= item.genre_id %>
+         <%= item.genre.name %>
         </td>
         <td>
-         <%if item.is_active == FALSE %>
+         <%if item.is_active == true %>
           <h4 class="text-success">販売中</h4>
          <% else %>
           <h4 class="text-black-50">販売停止中</h4>

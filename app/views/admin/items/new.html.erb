@@ -26,8 +26,10 @@
     </div>
     <div class="field colspan mr-5">
       <h4>販売ステータス</h4>
-      <%= f.check_box :is_active %>販売中
-      <%= f.check_box :is_active %>販売中止
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :販売中%>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :販売停止中, false %>
     </div>
      <div class= "action">
       <%= f.submit '新規登録', class:"btn btn-success" %>
