@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   get "/customers/confirm" => "public/customers#confirm"
   patch "customers/withdraw" => "public/customers#withdraw"
 
-  resources :items, only: [:index, :show]
+  # resources :items, only: [:index, :show]
+  get "/items" => "public/items#index"
+  get "/items/:id" => "public/items#show"
   # resources :registrations, only: [:new, :create]
 
   # resources :sessions, only: [:new, :create, :destroy]
