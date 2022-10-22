@@ -21,12 +21,19 @@
         <div class="col-md-12 my-5">
           <h3>新着商品</h3>
         </div>
-        <div class="col-md-3 my-3 bg-dark">
-          <%# @items.each do |item| % いずれもitem実装後に表示>
-            <%#= image_tag item %><br>
-            <%#= item.item_name %><br>
-            <%#= item.non_taxed %>
-          <%# end %>
+        <div class="col-md-3 my-3">
+        <% @items.each do |item| %>
+          <%= link_to "show", item_path(item.id) do %>
+            <%= image_tag item.get_image(120,90) %><br>
+            <%= item.item_name %><br>
+            <%= item.non_taxed %>
+          <% end %>
+        <% end %>
+        </div>
+        <div class="col-md-12 my-5">
+          <p class="text-right">
+            <%= link_to "全ての商品を見る", items_path %>
+          </p>
         </div>
       </div>
 
@@ -39,6 +46,9 @@
         <li class="list-group-item">焼き菓子</li>
         <li class="list-group-item">プリン</li>
         <li class="list-group-item">キャンディ</li>
+      <%#= @genres.each do |genre| %>
+        <%#li class="list-group-item"><%= genre.name %><%#/li>
+      <%# end %>
       </ul>
     </div>
 
