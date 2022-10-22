@@ -7,6 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
+
+
+
+
+
+
+
+
+
+
 # 15件の情報を作りたい
 # 15.times do |n|
 #   Customer.create!(
@@ -20,7 +31,6 @@
 # 1件だけつくる
 Customer.create!(
   # [{
-    id: "id#{i + 1}",
     last_name: "名前(性)",
     first_name: "名前（名)",
     last_furigana: "フリガナ(姓)",
@@ -30,7 +40,7 @@ Customer.create!(
     tel: "012345",
     email: "hanako@123",
     password: "123456",
-    is_deleted: "FALSE"
+    is_deleted: false
   # },
   # { id: "id#{i + 1}",
   #   last_name: "名前(性)",
@@ -55,12 +65,18 @@ Customer.create!(
 #     )
 # end
 
+# 4.times do |n|
+  Genre.create!(
+    name: "ジャンル名"
+    )
+# end
+
 Item.create!(
-    genre_id: "id#{i + 1}",
+    genre_id: 1,
     item_name: "商品名",
     item_introduction: "商品紹介",
-    is_active: "true",
-    non_taxed: "1200"
+    is_active: true,
+    non_taxed: 1200
     )
 
 # 15.times do |n|
@@ -76,10 +92,3 @@ Item.create!(
   #   )
 
   # item.image.attach(io: File.open(Rails.root.join('app/assets/images/no_image.jpg')), filename: 'no_image.jpg')
-
-# 4.times do |n|
-  Genre.create!(
-    # id: "id#{i + 1}",
-    name: "ジャンル名"
-    )
-# end
