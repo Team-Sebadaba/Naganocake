@@ -18,5 +18,12 @@ class Customer < ApplicationRecord
     validates :tel, presence: true
     validates :email, presence: true
 
+  def address_display
+    '〒' + postal + ' ' + address
+  end
+
+  def name_display
+    last_name + ' ' + first_name
+  end
 
 end
