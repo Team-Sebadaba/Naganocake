@@ -1,47 +1,47 @@
-<div class="container">
- <h2>会員情報編集</h2>
+<h2>会員情報編集</h2>
 
-  <% if @customer.errors.any? %>
-   <%= @customer.errors.count %>error prohibited this obj from being saved:
-   <ul>
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul>
     <% @customer.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
-   </ul>
- <% end %>
+  </ul>
+<% end %>
+
 
   <%= form_with model: @customer, url: '/customers/infomation', method: :patch, local: true do |f| %>
 
   <div class="field">
    <%= f.label :氏名 %>
    <%= f.text_field :last_name, autofocus: true %>
-   <%= f.text_field :first_name, autofocus: true %>
+   <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
    <%= f.label :フリガナ %>
-   <%= f.text_field :last_furigana, autofocus: true %>
-   <%= f.text_field :first_furigana, autofocus: true %>
+   <%= f.text_field :last_furigana %>
+   <%= f.text_field :first_furigana %>
   </div>
 
   <div class="field">
    <%= f.label :郵便番号 %>
-   <%= f.text_field :postal, autofocus: true%>
+   <%= f.text_field :postal %>
   </div>
 
   <div class="field">
    <%= f.label :住所 %>
-   <%= f.text_field :address, autofocus: true %>
+   <%= f.text_field :address %>
   </div>
 
   <div class="field">
    <%= f.label :電話番号 %>
-   <%= f.text_field :tel, autofocus: true %>
+   <%= f.text_field :tel %>
   </div>
 
   <div class="field">
    <%= f.label :メールアドレス %>
-   <%= f.email_field :email, autofocus: true %>
+   <%= f.email_field :email %>
   </div>
 
   <%= f.submit "編集内容を保存", class: "btn btn-success" %>

@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
     @orders = current_customer.orders.all
   end
 
-  def show
+  def show  
     @order= current_customer.order.find(params[:id])
     @order_details = @order.order_details.all
   end

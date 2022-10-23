@@ -7,7 +7,7 @@
   </ul>
 <% end %>
 
-<h6 class="mb-5"><%= @customer.name %>さんの会員情報編集</h6>
+<h6 class="mb-5"><%= @customer.last_name %>さんの会員情報編集</h6>
  <div class="row">
 
   <div class="col-4">
@@ -50,15 +50,15 @@
      <div class="field" >
       <h8><%= f.text_field :email %></h8>
      </div>
-     <div class="done">
-          <%= form.label :done %>
+     <div class="is_deleted">
+         <!--%= form.label :is_delete %>-->
       <div>
-          <%= form.radio_button :done, true %>
-          <%= form.label :done, '有効', value: true %>
+          <%= f.radio_button :is_deleted, false %>
+          <%= f.label :is_deleted, '有効'  %>
       </div>
       <div>
-          <%= form.radio_button :done, false %>
-          <%= form.label :done, '退会', value: false %>
+          <%= f.radio_button :is_deleted, true %>
+          <%= f.label :is_deleted, '退会' %>
       </div>
      </div>
      <div class= "field">

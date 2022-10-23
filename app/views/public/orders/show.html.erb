@@ -34,7 +34,8 @@
     </tr>
     <tr>
       <td>請求額</td>
-       <td><% total_price = @order.total + @order.potage %></td>
+       <!--<td>% total_price = @order.total + @order.potage %></td>-->
+      <td><% total_price = @order.total_price %></td>
        <td><%= total_price.to_s(:delimited) %></td>
     </tr>
   </table>
@@ -51,9 +52,10 @@
     <% @order_detils.each do |order_detail| %>
      <tr>
        <td><%= order_detail.item.name %></td>
-       <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
+       <td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
        <td><%= order_detail.amount %></td>
-       <td><% total_price = order_detail.item.add_tax_price * order_detail.amout %></td>
-        <td><%= total_priceto_s(:delimited) %></td>
+       <!--<td>% total_price = order_detail.item.with_tax_price * order_detail.amout %></td>-->
+       <td><% total_price = order_detail.price %></td>
+        <td><%= total_price.to_s(:delimited) %></td>
      </tr>
 
