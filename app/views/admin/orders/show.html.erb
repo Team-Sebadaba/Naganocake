@@ -1,11 +1,22 @@
 <div class = "container">
-  <h2 class="mb-5">注文履歴一覧</h2>
+  <h2 class="mb-5">注文履歴詳細</h2>
   <table>
-    <th>購入者</th>
-    <th>注文日</th>
-    <th>配送先</th>
-    <th>支払方法</th>
-    <th>注文</th>
+    <tr>
+      <td>購入者</td>
+      <td>注文日</td>
+      <td>配送先</td>
+      <td>支払方法</td>
+      <td>注文</td>
+    </tr>
+    <tr>
+      <td><%= @customer.last_name + customer.first_name %></td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= @order.shipping_postal%><%= order.shipping_address %></td>
+      <td><%= @order.shipping_name %></td>
+      <td><%= @order.payment %></td>
+      <td><%= f.collection_select :order_status, Order.all, :id, :order_status %></td>
+      <td><%= f.submit '更新', class:"btn btn-success" %></td>
+    </tr>
   </table>
   <table class='table table-hover table-inverse'>
     <tr>
@@ -18,17 +29,26 @@
     <% @Ditails.each do |ditail| %>
     <tr>
       <td><%= ditail.item.item_name %></td>
-      <td><%= ditail.item.non_taxed * 1.1 %></td>
+      <td><%= ditail.item.with_tax_price %></td>
       <td><%= ditail.amount %></td>
-      <!--<td>小計＊個数</td>-->
+      <!--<td>><#%= ditail.item.with_tax_price * ditail.amount %></td>-->
+      <td><%= ditail.item.subtotal%></td>
+      <!--% @total +=  ditail.item.subtotal %>-->
       <td><%= f.collection_select :item_status, Ditails.all, :id, :item_status %></td>
       <td><%= f.submit '更新', class:"btn btn-success" %></td>
     </tr>
     <% end %>
   </table>
   <table>
-    <td>商品合計</td>
-    <td>送料</td>
-    <td>請求金額合計</td>
+    <tr>
+      <td>商品合計</td>
+      <td>送料</td>
+      <td>請求金額合計</td>
+    </tr>
+    <tr>
+      <td><%= @ditail.price %></td>
+      <td><%= @order.postage %></td>
+      <td><%= @order.total %></td>
+    </tr>
   </table>
 </dev
