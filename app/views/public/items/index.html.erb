@@ -10,7 +10,7 @@
           <%= link_to show_items_path(item.id) do %>
             <%= image_tag item.get_image(200,140) %><br>
             <%= item.item_name %><br>
-            <%= item.non_taxed %>
+            ¥<%= item.non_taxed.to_s(:delimited) %>
           <% end %>
         </div>
       <% end %>
@@ -19,8 +19,8 @@
   <!--  %= paginate @items %>-->
   <!--</dev>-->
   </div>
-  
-  <div class="col-md-2">
+
+  <div class="col-md-3">
     <%= render 'genres_list', genres: @genres %>
   </div>
 </div>
