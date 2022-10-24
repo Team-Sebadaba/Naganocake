@@ -15,9 +15,12 @@ class Customer < ApplicationRecord
     validates :address, presence: true
     validates  :email, presence: true
 
-    VALID_POSTAL_CODE_REGEX = /\A\d{7}\z/
-    validates :postal, presence: true, format: { with: VALID_POSTAL_CODE_REGEX }
+  def address_display
+    '〒' + postal + ' ' + address
+  end
 
-    validates :tel, presence: true, length: { in: 10..11 }
+  def name_display
+    last_name + ' ' + first_name
+  end
 
 end

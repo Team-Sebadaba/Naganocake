@@ -1,57 +1,47 @@
-<div class="container my-5">
-  <div class="row">
+<div class="row">
 
-    <div class="col-md-9">
+  <div class="col-md-9">
 
-      <div class="row">
-        <div class="col-md-12 card">
-          <img class="card-img" src="assets/naganocake.jpg" alt="">
-            <div class="card-img-overlay">
-              <p class="cover-text">
+    <div class="row">
+      <div class="col-md-12 card">
+        <img class="card-img" src="assets/naganocake.jpg" alt="">
+          <div class="card-img-overlay">
+            <p class="cover-text">
               ようこそ、ながのCAKEへ。<br>
               このサイトは、ケーキ販売のECサイトになります。<br>
               会員ではない方も商品の閲覧はできますが、<br>
               購入には会員登録が必要になります。
-              </p>
-            </div>
-        </div>
+            </p>
+          </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-md-12 my-5">
-          <h3>新着商品</h3>
-        </div>
-        <div class="col-md-3 my-3">
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <h3>新着商品</h3>
+      </div>
+      <div class="col-md-3 my-3">
         <% @items.each do |item| %>
-          <%= link_to root_path do %>
+          <%= link_to items_path(item.id) do %>
             <%= image_tag item.get_image(120,90) %><br>
             <%= item.item_name %><br>
             <%= item.non_taxed %>
           <% end %>
         <% end %>
-        </div>
-        <div class="col-md-12 my-5">
-          <p class="text-right">
-            <%= link_to "全ての商品を見る", items_path %>
-          </p>
-        </div>
       </div>
-
     </div>
 
-    <div class="col-md-3">
-      <ul class="list-group">
-        <h5>ジャンル一覧</h5>
-        <li class="list-group-item">ケーキ</li>
-        <li class="list-group-item">焼き菓子</li>
-        <li class="list-group-item">プリン</li>
-        <li class="list-group-item">キャンディ</li>
-      <%#= @genres.each do |genre| %>
-        <%#li class="list-group-item"><%= genre.name %><%#/li>
-      <%# end %>
-      </ul>
-    </div>
+  </div>
 
+  <div class="col-md-3">
+    <ul class="list-group">
+      <h5>ジャンル一覧</h5>
+      <li class="list-group-item">
+        <% @genres.each do |genre| %>
+          <%= genre.name %>
+        <% end %>
+      </li>
+    </ul>
   </div>
 
 </div>
