@@ -31,7 +31,7 @@
         <%= f.radio_button :dest, "1" %>
         <%= f.label :dest, "登録先住所から選択", value: 1 %><br>
         <%#= f.collection_select(:registered, current_customer.destinations.all, :id, :destination_display) %>
-        <%= f.select :destination_id, options_from_collection_for_select(Destination.all, :id, :destination_display) %>
+        <%= f.select :destination, options_from_collection_for_select(Destination.all, :id, :destination_display) %>
       </div>
       <div>
         <%= f.radio_button :dest, "2" %>
