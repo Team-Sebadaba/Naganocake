@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   # homes
   root :to => "public/homes#top"
   get '/about' => 'public/homes#about'
+
 
   # customers
   get '/customers' => 'public/customers#show'
@@ -45,6 +47,7 @@ Rails.application.routes.draw do
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :update, :destroy, :create]
   end
+
 
   # admin(管理者側)
   namespace :admin do
