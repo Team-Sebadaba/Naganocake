@@ -40,11 +40,11 @@ Rails.application.routes.draw do
   get '/items' => 'public/items#index'
   get '/items/:id' => 'public/items#show', as: 'show_items'
 
-  # cart_items
+  # cart_items(namespace=コントローラーの位置を指定。ルートは優先順位が上からになる。)
   scope module: :public do
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :update, :destroy, :create]
   end
-  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
   # admin(管理者側)
   namespace :admin do

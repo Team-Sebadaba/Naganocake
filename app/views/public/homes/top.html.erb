@@ -20,15 +20,15 @@
       <div class="col-md-12 mt-5">
         <h3>新着商品</h3>
       </div>
-      <div class="col-md-3 my-3">
-        <% @items.each do |item| %>
+      <% @items.each do |item| %>
+        <div class="col-md-3 my-3">
           <%= link_to items_path(item.id) do %>
             <%= image_tag item.get_image(120,90) %><br>
             <%= item.item_name %><br>
-            <%= item.non_taxed %>
+            ¥<%= item.non_taxed.to_s(:delimited) %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 
   </div>
@@ -36,11 +36,11 @@
   <div class="col-md-3">
     <ul class="list-group">
       <h5>ジャンル一覧</h5>
-      <li class="list-group-item">
         <% @genres.each do |genre| %>
-          <%= genre.name %>
+          <li class="list-group-item">
+            <%= genre.name %>
+          </li>
         <% end %>
-      </li>
     </ul>
   </div>
 
