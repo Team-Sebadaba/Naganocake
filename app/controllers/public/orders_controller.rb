@@ -13,8 +13,9 @@ class Public::OrdersController < ApplicationController
     #@orders = current_customer.orders.all(params[:page]).reverse_order
   end
 
-  def show
-    @order = current_customer.orders.find(params[:id])
+  def show  
+    @order= current_customer.order.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   # 注文情報確認画面(confirm.html.erb)を表示させ、
