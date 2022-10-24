@@ -41,7 +41,9 @@ Rails.application.routes.draw do
   get '/items/:id' => 'public/items#show', as: 'show_items'
 
   # cart_items
+  scope module: :public do
   resources :cart_items, only: [:index, :update, :destroy, :create]
+  end
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
   # admin(管理者側)
