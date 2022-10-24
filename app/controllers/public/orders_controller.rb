@@ -13,6 +13,12 @@ class Public::OrdersController < ApplicationController
     #@orders = current_customer.orders.all(params[:page]).reverse_order
   end
 
+  def show
+    @order= current_customer.order.find(params[:id])
+    @order_details = @order.order_details.all
+  end
+
+
   # 注文情報確認画面(confirm.html.erb)を表示させ、
   # 注文を確定するボタンで注文作成(create)
   # カートの中身+支払方法などの情報(new.html.erbで登録した内容)
