@@ -1,20 +1,35 @@
-/*main{*/
-/*  background-color: red;*/
-/*}*/
-
-/*footer{*/
-/*  background-color: blue;*/
-
-/*}*/
-
-
+/*viwes/public/items/index.html*/
 .item_count {
   font-size:20px;
 }
 
+/*views/見出し*/
 .caption {
   display: inline-block;
   padding: 1px 10px;
-  background-color: #eeeeee
-  text-al
+  background-color: #eeeeee;
+
+}
+/*入力フォーム*/
+.email {
+  width: 400px;
+}
+.field {
+  /*display:flex;*/
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.label {
+  display: inline-block;
+  margin-right: 100px;
+}
+
+.input_text {
+  display: inline-block;
+}
+
+.actions {
+  
+  text-align: center;
 }
