@@ -4,10 +4,17 @@
 
 /*footer{*/
 /*  background-color: blue;*/
-  
+
 /*}*/
 
 
 .item_count {
   font-size:20px;
+}
+
+.caption {
+  display: inline-block;
+  padding: 1px 10px;
+  background-color: #eeeeee
+  text-al
 }
