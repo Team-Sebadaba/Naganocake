@@ -13,33 +13,29 @@ class Public::OrdersController < ApplicationController
     #@orders = current_customer.orders.all(params[:page]).reverse_order
   end
 
-  def show
-    @order = current_customer.orders.find(params[:id])
-  end
-
   # 注文情報確認画面(confirm.html.erb)を表示させ、
   # 注文を確定するボタンで注文作成(create)
   # カートの中身+支払方法などの情報(new.html.erbで登録した内容)
   # 作成後、注文完了画面(complete.html.erb)を表示させる
   def create
-    cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
-    if @order.save
+    @order.customer_id = current_customer.id
+    @order.save
       # 今まではformから送信していたデータを手動で送る
-      cart_items.each do |cart|
+      current_customer.cart_items.each do |cart_item|
         detail = Detail.new
-        detail.item_id = cart_item.item_id
         detail.order_id = @order.id
+        detail.item_id = cart_item.id
         detail.amount = cart_item.quantity
         detail.price = cart_item.subtotal
         detail.save
       end
-        cart_items.destroy_all
-        redirect_to 'complete'
-    else
-      @order = Order.new(order_params)
-      render :new
-    end
+    redirect_to orders_complete_path
+    current_customer.cart_items.destroy_all
+  end
+
+  def show
+    @order = current_customer.orders.find(params[:id])
   end
 
   def confirm
@@ -63,13 +59,13 @@ class Public::OrdersController < ApplicationController
       @order.shipping_name = current_customer.name_display
     # "登録先住所から選択"の場合
     elsif params[:order][:dest] == '1'
-      destination = Destination.find(params[:order])
+      destination = Destination.find(params[:order][:destination])
       @order.shipping_postal = destination.postal
       @order.shipping_address = destination.address
-      @order.shipping_name = destination.to_name
+      @order.shipping_name = destination.name
     # "新しいお届け先"の場合
     end
-
+    @total = 0
     @cart_items = current_customer.cart_items.all
   end
 
@@ -84,7 +80,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def destination_params
-    params.require(:order).permit(:postal, :address, :to_name, :customer_id)
+    params.require(:order).permit(:postal, :address, :name, :customer_id)
   end
 
 end
