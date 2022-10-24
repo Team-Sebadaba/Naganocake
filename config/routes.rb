@@ -29,7 +29,7 @@ Rails.application.routes.draw do
    get '/customers/infomation/edit' => 'public/customers#edit', as: 'edit_customer'
    patch '/customers/infomation' => 'public/customers#update'
    get '/customers/confirm' => 'public/customers#confirm'
-   patch 'customers/withdraw' => 'public/customers#withdraw'
+   patch 'customers/:id/withdraw' => 'public/customers#withdraw', as: 'withdraw_customer'
 
    get '/destinations' => 'public/destinations#index'
    post '/destinations' => 'public/destinations#create'
