@@ -1,21 +1,20 @@
-<div class="container my-5">
   <div class="row">
 
-    <div class="col-md-9">
+    <div class="col-md-10">
 
       <div class="row">
-        <div class="col-md-4 mb-5">
+        <div class="col-md6 mb-5">
           <img src="assets/chocolatecake3.jpg" alt="">
-          <%= image_tag @item.get_image(160,120) %>
+          <%= image_tag @item.get_image(400,200) %>
         </div>
-        <div class="col-md-5 my-5 bg-dark">
-          <h4><%= @item.name %></h4>
-          <p><%= @item.introduction %></p>
-          <span>¥<%= @item.non_taxtd %></span>
+        <div class="col-md-6 my-5">
+          <h4><%= @item.item_name %></h4>
+          <p><%= @item.item_introduction %></p>
+          <span>¥<%= @item.non_taxed %></span>
 
           <table>
             <tr>
-            <% if @item.is_active == TRUE %>
+            <% if @item.is_active == true %>
 
               <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
               <td>
@@ -37,20 +36,7 @@
       <div></div>
 
     </div>
-    <%= render 'genres_list', genres: @genres %>
-
-    <!--<div class="col-md-3">-->
-    <!--  <ul class="list-group">-->
-    <!--    <h5>ジャンル一覧</h5>-->
-    <!--      <li class="list-group-item">ケーキ</li>-->
-    <!--      <li class="list-group-item">焼き菓子</li>-->
-    <!--      <li class="list-group-item">プリン</li>-->
-    <!--      <li class="list-group-item">キャンディ</li>-->
-    <!--    <%= @genres.each do |genre| %>-->
-    <!--      <li class="list-group-item"><%= genre.name %></li>-->
-    <!--    <% end %>-->
-    <!--  </ul>-->
-    <!--</div>-->
-
+    <div class="col-md-2">
+      <%= render 'genres_list', genres: @genres %>
+    </div>
   </div>
-</div>
