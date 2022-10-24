@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   # items
   get '/items' => 'public/items#index'
-  get '/items/:id' => 'public/items#show'
+  get '/items/:id' => 'public/items#show', as: 'show_items'
 
   # cart_items
   resources :cart_items, only: [:index, :update, :destroy, :create]

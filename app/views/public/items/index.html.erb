@@ -7,7 +7,7 @@
       </div>
       <% @items.each do |item| %>
         <div class="col-md-3 my-3">
-          <%= link_to items_path(item.id) do %>
+          <%= link_to show_items_path(item.id) do %>
             <%= image_tag item.get_image(200,140) %><br>
             <%= item.item_name %><br>
             <%= item.non_taxed %>
