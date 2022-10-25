@@ -72,7 +72,6 @@ class Public::OrdersController < ApplicationController
       @order.shipping_postal = destination.postal
       @order.shipping_address = destination.address
       @order.shipping_name = destination.name
-    # "新しいお届け先"の場合
     end
     @total = 0
     @cart_items = current_customer.cart_items.all

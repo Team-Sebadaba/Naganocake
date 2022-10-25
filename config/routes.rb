@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   # customers
   get '/customers' => 'public/customers#show'
-  get '/customers/infomation/edit' => 'public/customers#edit', as: 'edit_customer'
+  get '/customers/infomation/:id/edit' => 'public/customers#edit', as: 'edit_customer'
   patch '/customers/infomation' => 'public/customers#update'
   get '/customers/confirm' => 'public/customers#confirm'
   patch 'customers/:id/withdraw' => 'public/customers#withdraw', as: 'withdraw_customer'
