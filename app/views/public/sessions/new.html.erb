@@ -1,21 +1,35 @@
-<h2>ログイン</h2>
- <h4>会員の方はこちらからログイン</h4>
+<div class="row mb-5">
+  <div class="caption">
+   <h4>ログイン</h4>
+  </div>
+</div>
+  <div class="caption">
+   <h5>会員の方はこちらからログイン</h5>
+  </div>
 
+<div class="row justify-content-around">
+    <div class="col-sm-8 px-5">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="label"><%= f.label :メールアドレス %></div>
+    <div class="input_text"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %></div>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <div class="label"><%= f.label :パスワード %></div>
+    <div class="input_text"><%= f.password_field :password, autocomplete: "current-password", size: 40 %></div>
   </div>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <%= f.submit "ログイン", class:"btn btn-primary" %>
   </div>
 <% end %>
+</div>
+</div>
 
-<h4>会員登録がお済みでない方</h4>
+  <div class="caption">
+    <h5>会員登録がお済みでない方</h5>
+  </div>
+  <div class="sign_up_link">
    <%= render "public/shared/links" %>
+   </div>
