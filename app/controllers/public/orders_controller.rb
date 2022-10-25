@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :check_cart_item, except: [:index, :show, :complete]
   # 注文情報入力画面で、注文方法を一通り登録する
   # 確認画面へ進むボタンで注文情報確認へ移動(confirm.html.erbを表示)
   def new
@@ -9,7 +10,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    @order = order.find(params[:id])
+    #@order = order.find(params[:id])
     #@orders = current_customer.orders.all(params[:page]).reverse_order
   end
 
@@ -31,17 +32,19 @@ class Public::OrdersController < ApplicationController
       current_customer.cart_items.each do |cart_item|
         detail = Detail.new
         detail.order_id = @order.id
-        detail.item_id = cart_item.id
+        detail.item_id = cart_item.item_id
         detail.amount = cart_item.quantity
         detail.price = cart_item.subtotal
-        detail.save
+        detail.save!
       end
     redirect_to orders_complete_path
     current_customer.cart_items.destroy_all
   end
 
   def show
-    @order = current_customer.orders.find(params[:id])
+    @order = Order.find(params[:id])
+    @order.details = @order.details.all
+    @subtotal = 0
   end
 
   def confirm
@@ -87,6 +90,12 @@ class Public::OrdersController < ApplicationController
 
   def destination_params
     params.require(:order).permit(:postal, :address, :name, :customer_id)
+  end
+
+  def check_cart_item
+    unless current_customer.cart_items.exists?
+      redirect_to items_path
+    end
   end
 
 end

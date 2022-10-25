@@ -43,7 +43,7 @@
 
 <div class="row">
   <div class="col-md-12 text-inline">
-    <h4>支払方法</h4><p><%= @order.payment %></p>
+    <h4>支払方法</h4><p><%= @order.payment_i18n %></p>
   </div>
   <div class="col-md-12 text-inline">
     <h4>お届け先</h4>
@@ -56,6 +56,7 @@
   <%= form_with model: @order, url: orders_create_path, local: true do |f| %>
     <%= f.hidden_field :customer_id %>
     <%= f.hidden_field :payment %>
+    <%= f.hidden_field :postage %>
     <%= f.hidden_field :shipping_postal %>
     <%= f.hidden_field :shipping_address %>
     <%= f.hidden_field :shipping_name %>
