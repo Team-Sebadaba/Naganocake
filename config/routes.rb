@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   post '/orders/create' => 'public/orders#create'
   get '/orders/complete' => 'public/orders#complete'
   get '/orders' => 'public/orders#index'
-  get '/orders/:id' => 'public/orders#show'
+  get '/orders/:id' => 'public/orders#show', as: 'show_orders'
 
   # items
   get '/items' => 'public/items#index'
