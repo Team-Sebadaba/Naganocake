@@ -9,9 +9,9 @@
       <td>注文</td>
     </tr>
     <tr>
-      <td><%= @customer.last_name + customer.first_name %></td>
+      <td><%= @order.customer.last_name %></td>
       <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= @order.shipping_postal%><%= order.shipping_address %></td>
+      <td><%= @order.shipping_postal%><%= @order.shipping_address %></td>
       <td><%= @order.shipping_name %></td>
       <td><%= @order.payment %></td>
       <td><%= f.collection_select :order_status, Order.all, :id, :order_status %></td>

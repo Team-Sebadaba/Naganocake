@@ -10,4 +10,11 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     redirect_to admin_order_path
   end
+  
+  private
+
+  def order_params
+    params.require(:order).permit(:last_name, :first_name, :last_furigana, :first_furigana, :postal, :address, :email, :is_deleted)
+  end
+
 end
