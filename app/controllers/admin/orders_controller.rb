@@ -15,11 +15,15 @@ class Admin::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:last_name, :first_name, :last_furigana, :first_furigana, :postal, :address, :email, :is_deleted)
+    params.require(:order).permit(:customer_id, :payment, :order_status, :postage, :total, :shipping_postal, :shipping_address, :shipping_name)
   end
 
-  def order_detail_params
-    params.require(:detail).permit(:order_id, :item_id, :item_status, :amount, :price)
-  end
+  # def admin_order_params
+  #   params.require(:order).permit(:last_name, :first_name, :last_furigana, :first_furigana, :postal, :address, :email, :is_deleted)
+  # end
+
+  # def order_detail_params
+  #   params.require(:detail).permit(:order_id, :item_id, :item_status, :amount, :price)
+  # end
 
 end

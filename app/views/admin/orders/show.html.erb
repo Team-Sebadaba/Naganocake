@@ -1,27 +1,25 @@
 <div class="row mb-5">
-  <div class="caption">
-   <h4>注文履歴詳細</h4>
-  </div>
+   <h6>注文履歴詳細</h6>
 </div>
 <div class="row">
-<table>
+<t.header>
   <tr>
-    <td>購入者</td>
-    <td>注文日</td>
-    <td>配送先</td>
-    <td>支払方法</td>
-    <td>注文ステータス</td>
+    <th>購入者</th>
+    <th>注文日</th>
+    <th>配送先</th>
+    <th>支払方法</th>
+    <th>注文ステータス</th>
   </tr>
-  <tr>
-    <td><%= @order.customer.last_name %></td>
-    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-    <td><%= @order.shipping_postal%><%= @order.shipping_address %></td>
-    <td><%= @order.shipping_name %></td>
-    <td><%= @order.payment %></td>
-    <td><%#= f.collection_select :order_status, Order.all, :id, :order_status %></td>
-    <td><%#= f.submit '更新', class:"btn btn-success" %></td>
-  </tr>
-</table>
+</t.header>
+    <%= @order.customer.last_name %>
+    <%= @order.created_at.strftime('%Y/%m/%d') %>
+    <%= @order.shipping_postal%><%= @order.shipping_address %>
+    <%= @order.shipping_name %>
+    <%= @order.payment %>
+    <%= form_with model: @order, url: admin_update_orders_path(@order.id), method: :patch do |f| %>
+      <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"),k]} %>
+      <%= f.submit '更新', class: "btn btn-success" %>
+    <% end %>
 </div>
 <div class="row">
   <div class="col-10">
