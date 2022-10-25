@@ -23,7 +23,7 @@
   <div class="col-md-12">
     <h4>お届け先</h4>
       <div>
-        <%= f.radio_button :dest, "0" %>
+        <%= f.radio_button :dest, "0" , {:checked => true} %>
         <%= f.label :dest, "ご自身の住所", value: 0 %><br>
         <%= current_customer.address_display %><br><%= current_customer.name_display %>
       </div>

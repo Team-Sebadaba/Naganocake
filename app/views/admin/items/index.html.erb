@@ -1,15 +1,24 @@
-<div class = "container">
-  <h2 class="mb-5">商品一覧</h2>
-  <table class='table table-hover table-inverse'>
-    <thead>
-      <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
+<div class="row mb-5">
+  <div class="caption">
+   <h4>商品一覧</h4>
+  </div>
+  <div class="item_index_link">
+    <%= link_to new_admin_item_path do %>
+     アイコン<i class="fa-solid fa-circle-plus"></i>
+    <% end %>
+  </dov>
+</div>
+
+<table class='table table-hover table-inverse'>
+  <thead class="table_title">
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
     <tbody>
      <% @items.each do |item| %>
       <tr>
@@ -27,15 +36,16 @@
         </td>
         <td>
          <%if item.is_active == true %>
-          <h4 class="text-success">販売中</h4>
+          <h6 class="text-success">販売中</h6>
          <% else %>
-          <h4 class="text-black-50">販売停止中</h4>
+          <h6 class="text-black-50">販売停止中</h6>
          <% end %>
         </td>
       </tr>
      <% end %>
     </tbody>
  </table>
- <%= paginate @items %>
+ <%#= paginate @items %>
+ <%= render 'layouts/footer', obj: @items %>
   </div>
 </div>
