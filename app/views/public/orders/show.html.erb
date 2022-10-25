@@ -14,7 +14,7 @@
    </tr>
    <tr>
      <td>支払方法</td>
-       <td><%= @order.payment_method_i18n %></td>
+       <td><%= @order.payment_i18n %></td>
    </tr>
    <tr>
      <td>ステータス</td>
@@ -26,17 +26,16 @@
   <table>
     <tr>
       <td>商品合計</td>
-       <td><%= @order.total.to_s(:delimited) %></td>
+       <td><%= @total.to_s(:delimited) %></td>
     </tr>
     <tr>
       <td>配送料</td>
-       <td><%= @order.postage.to_s(:delimited) %></td>
+       <td><%= postage = 800 %></td>
     </tr>
     <tr>
-      <td>請求額</td>
+      <td>ご請求額</td>
        <!--<td>% total_price = @order.total + @order.potage %></td>-->
-      <td><% total_price = @order.total_price %></td>
-       <td><%= total_price.to_s(:delimited) %></td>
+      <td><% (@total + postage).to_s(:delimited) %></td>
     </tr>
   </table>
 
@@ -49,13 +48,13 @@
        <th>小計</th>
      </tr>
    </thead>
-    <% @order_detils.each do |order_detail| %>
+    <% @order.details.each do |detail| %>
      <tr>
-       <td><%= order_detail.item.name %></td>
-       <td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
-       <td><%= order_detail.amount %></td>
+       <td><%= detail.item.item_name %></td>
+       <td><%= detail.item.with_tax_price.to_s(:delimited) %></td>
+       <td><%= detail.amount %></td>
        <!--<td>% total_price = order_detail.item.with_tax_price * order_detail.amout %></td>-->
-       <td><% total_price = order_detail.price %></td>
-        <td><%= total_price.to_s(:delimited) %></td>
+       <td><%= detail.price %></td>
+       <% @total = @total + detail.price %>
      </tr>
-
+    <% end %>

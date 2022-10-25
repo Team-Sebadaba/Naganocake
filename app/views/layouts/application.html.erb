@@ -12,10 +12,11 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="border border-secondary"></div>
+      <nav class="navbar navbar-expand-sm navbar-light" style ="background-color: #d2b48c">
         <div class="container">
           <a class=navbar-brand href="/">
-            <%= image_tag 'logo.jpg', :size =>'90x55' %>
+            <%= image_tag 'Naganocake.jpg', :size =>'90x55' %>
           </a>
 
           <% if customer_signed_in? %>
@@ -130,7 +131,7 @@
           <!--</div>-->
         </div>
       </nav>
-      <div class="border border-secondary"></div>
+    <div class="border border-secondary"></div>
     </header>
     <main>
       <div class="container my-5">
@@ -138,8 +139,10 @@
       </div>
     </main>
   <footer>
-    <div class="container">
-    <div class="border border-secondary"></div>
+    <div class="fixed-bottom" style ="background-color: #d2b48c">
+      <div class="border border-secondary"></div>
+      <div class="container mb-5"></div>
+    </div>
   </footer>
   </body>
 </html>
