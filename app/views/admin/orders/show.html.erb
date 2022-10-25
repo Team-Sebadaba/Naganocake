@@ -1,0 +1,69 @@
+<div class="row mb-5">
+  <div class="caption">
+   <h4>注文履歴詳細</h4>
+  </div>
+</div>
+<div class="row">
+<table>
+  <tr>
+    <td>購入者</td>
+    <td>注文日</td>
+    <td>配送先</td>
+    <td>支払方法</td>
+    <td>注文ステータス</td>
+  </tr>
+  <tr>
+    <td><%= @order.customer.last_name %></td>
+    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+    <td><%= @order.shipping_postal%><%= @order.shipping_address %></td>
+    <td><%= @order.shipping_name %></td>
+    <td><%= @order.payment %></td>
+    <td><%#= f.collection_select :order_status, Order.all, :id, :order_status %></td>
+    <td><%#= f.submit '更新', class:"btn btn-success" %></td>
+  </tr>
+</table>
+</div>
+<div class="row">
+  <div class="col-10">
+<table class='table table-hover table-inverse'>
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込）</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th>製作ステータス</th>
+  </tr>
+  <% @details.each do |detail| %>
+  <tr>
+    <td><%= detail.item.item_name %></td>
+    <td><%= detail.item.with_tax_price.to_s(:delimited) %></td>
+    <td><%= detail.amount %></td>
+    <td><%= (detail.item.with_tax_price * detail.amount).to_s(:delimited) %></td>
+    <td><%#= detail.item.subtotal%></td>
+    <!--% @total +=  detail.item.subtotal %>-->
+    <td><%#= f.collection_select :item_status, Details.all, :id, :item_status %></td>
+    <td><%#= f.submit '更新', class:"btn btn-success" %></td>
+  </tr>
+  <% end %>
+</table>
+</div>
+<div class="col-2">
+<table>
+  <tr>
+    <td>商品合計</td>
+    <td>送料</td>
+    <td>請求金額合計</td>
+  </tr>
+  <tr>
+    <td>
+     <% @details.each do |detail| %>
+       <% @subtotal_price = @subtotal_price + detail.price %>
+     <% end %>
+     <%= @subtotal_price.to_s(:delimited) %>
+    </td>
+    <td><%= postage = 800 %></td>
+    <td><%= (@subtotal_price + postage).to_s(:delimited) %></td>
+  </tr>
+</table>
+</div>
+</div>
