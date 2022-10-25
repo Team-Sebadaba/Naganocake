@@ -1,55 +1,39 @@
-<div class="container my-5">
-  <div class="row">
+<div class="row">
 
-    <div class="col-md-9">
+  <div class="col-md-10">
 
-      <div class="row">
-        <div class="col-md-4 mb-5">
-          <img src="assets/chocolatecake3.jpg" alt="">
-          <%= image_tag @item.get_image(160,120) %>
-        </div>
-        <div class="col-md-5 my-5 bg-dark">
-          <h4><%= @item.name %></h4>
-          <p><%= @item.introduction %></p>
-          <span>¥<%= @item.non_taxtd %></span>
-
-          <table>
-            <tr>
-            <% if @item.is_active == TRUE %>
-
-              <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
-              <td>
-                <%= f.label :quantity, "個数選択" %>
-                <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
-              </td>
-              <td>
-                <%= f.hidden_field :item_id, :value => @item.id %>
-                <%= f.submit "カートに入れる", class: "btn btn-succsess" %>
-              </td>
-              <% end %>
-
-            <% end %>
-            </tr>
-          </table>
-        </div>
+    <div class="row">
+      <div class="col-md6 mb-5">
+        <img src="assets/chocolatecake3.jpg" alt="">
+        <%= image_tag @item.get_image(400,200) %>
       </div>
 
-      <div></div>
+    　<div class="col-md-6 my-5">
+        <h4><%= @item.item_name %></h4>
+        <p><%= @item.item_introduction %></p>
+        <span>¥<%= @item.non_taxed.to_s(:delimited) %></span>
 
+
+          <% if @item.is_active == true %>
+
+            <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
+
+              <%= f.label :quantity, "個数選択" %>
+              <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.submit "カートに入れる", class: "btn btn-succsess" %>
+
+            <% end %>
+
+          <% end %>
+      </div>
     </div>
 
-    <div class="col-md-3">
-      <ul class="list-group">
-        <h5>ジャンル一覧</h5>
-          <li class="list-group-item">ケーキ</li>
-          <li class="list-group-item">焼き菓子</li>
-          <li class="list-group-item">プリン</li>
-          <li class="list-group-item">キャンディ</li>
-        <%= @genres.each do |genre| %>
-          <li class="list-group-item"><%= genre.name %></li>
-        <% end %>
-      </ul>
-    </div>
+    <div></div>
 
+　</div>
+  <div class="col-md-2">
+    <%= render 'genres_list', genres: @genres %>
   </div>
 </div>
