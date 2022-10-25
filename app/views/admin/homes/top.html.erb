@@ -25,6 +25,7 @@
        <% order.details.each do |detail| %>
          <% @amount_total = @amount_total + detail.amount %>
        <% end %>
+       <%= @amount_total%>
       </td>
       <td>
        <%#= order.details.item_status %>
