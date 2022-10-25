@@ -1,5 +1,5 @@
 <div class="row mb-5">
-   <h6>注文履歴一覧</h6>
+  <h4>注文履歴一覧<h4>
 </div>
 <table class='table table-hover table-inverse'>
   <thead>
@@ -26,7 +26,7 @@
        <%= @amount_total%>
       </td>
       <td>
-       <%#= order.details.item_status %>
+       <%#= @details.item_status_i18n %>
        <%= order.order_status_i18n %>
       </td>
     </tr>
