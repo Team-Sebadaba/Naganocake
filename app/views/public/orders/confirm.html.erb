@@ -60,7 +60,7 @@
     <%= f.hidden_field :shipping_postal %>
     <%= f.hidden_field :shipping_address %>
     <%= f.hidden_field :shipping_name %>
-    <%= f.hidden_field :total, value: (@total + postage).to_s(:delimited) %>
+    <%= f.hidden_field :total, value: @total %>
     <%= f.submit "注文を確定する", class: "btn btn-success" %>
   <% end %>
   </div>
