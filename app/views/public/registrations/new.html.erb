@@ -57,6 +57,7 @@
    <div class="field">
     <div class="label"><%= f.label :パスワード %><em>(確認用)</em></div>
     <div class="input_text"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+    <%= f.submit "新規登録", class:"btn btn-success" %>
    </div>
 
    <% end %>

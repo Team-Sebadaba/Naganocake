@@ -1,10 +1,19 @@
+<% if @destination.errors.any? %>
+  <%= @destination.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @destination.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class = "ml-5 mb-4 ">
  <h5>配送先編集</h5>
 </div>
  <%= form_with model: @destination, url: update_destination_path, method: :patch, local: true do |f| %>
 
 <div class = "row">
- <div class = "col-9" >
+ <div class = "col-12" >
   <table class = "table table-borderless" >
    <tr>
     <td><%= f.label :郵便番号 %>

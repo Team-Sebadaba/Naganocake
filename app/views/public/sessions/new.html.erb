@@ -10,6 +10,7 @@
 <div class="row justify-content-around">
     <div class="col-sm-8 px-5">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+     <%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
     <div class="label"><%= f.label :メールアドレス %></div>
     <div class="input_text"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %></div>
