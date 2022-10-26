@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @customer = Customer.find(current_customer.id)
     @destinations = current_customer.destinations.all
+    @destination = Destination.new
   end
 
   def index
@@ -48,7 +49,6 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-
     if params[:order][:payment] == 'credit_card'
       @order.payment = 'credit_card'
     elsif params[:order][:payment] == 'transfer'
@@ -71,6 +71,15 @@ class Public::OrdersController < ApplicationController
       @order.shipping_postal = destination.postal
       @order.shipping_address = destination.address
       @order.shipping_name = destination.name
+    elsif params[:order][:dest] == '2'
+        @destination = Destination.new
+        @destination.postal = @order.shipping_postal
+        @destination.address = @order.shipping_address
+        @destination.name = @order.shipping_name
+        @destination.customer_id = current_customer.id
+      unless @destination.save
+        render :new
+      end
     end
     @total = 0
     @cart_items = current_customer.cart_items.all
