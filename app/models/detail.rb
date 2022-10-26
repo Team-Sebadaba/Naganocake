@@ -5,5 +5,4 @@ class Detail < ApplicationRecord
   enum item_status: { impossible_making: 0, waiting: 1, maiking: 2, complete: 3 }
 
 
-
 end

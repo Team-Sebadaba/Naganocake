@@ -15,7 +15,7 @@
       <h6><%= @order.created_at.strftime('%Y/%m/%d') %></h6>
       <h6><%= @order.shipping_postal%><%= @order.shipping_address %></h6>
       <h6><%= @order.shipping_name %></h6>
-      <h6><%= @order.payment %></h6>
+      <h6><%= @order.payment_i18n %></h6>
       <%= form_with model: @order, url: admin_update_orders_path(@order.id), method: :patch do |f| %>
         <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"),k]} %>
         <%= f.submit '更新', class: "btn btn-success" %>
