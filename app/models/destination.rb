@@ -7,7 +7,7 @@ class Destination < ApplicationRecord
   validates :name, presence: true
 
   def destination_display
-    '〒' + postal + ' ' + address + ' ' + to_name
+    '〒' + postal + ' ' + address + ' ' + name
   end
 
 end
