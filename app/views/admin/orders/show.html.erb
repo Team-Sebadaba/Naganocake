@@ -1,70 +1,70 @@
 <div class="row mb-5">
-   <h6>注文履歴詳細</h6>
+   <h4>注文履歴詳細</h4>
 </div>
 <div class="row">
-<t.header>
-  <tr>
-    <th>購入者</th>
-    <th>注文日</th>
-    <th>配送先</th>
-    <th>支払方法</th>
-    <th>注文ステータス</th>
-  </tr>
-</t.header>
-    <%= @order.customer.last_name %>
-    <%= @order.created_at.strftime('%Y/%m/%d') %>
-    <%= @order.shipping_postal%><%= @order.shipping_address %>
-    <%= @order.shipping_name %>
-    <%= @order.payment %>
-    <%= form_with model: @order, url: admin_update_orders_path(@order.id), method: :patch do |f| %>
-      <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"),k]} %>
-      <%= f.submit '更新', class: "btn btn-success" %>
-    <% end %>
+  <div class="field">
+    <div class="label">
+      <h6>購入者<h6>
+      <h6>注文日<h6>
+      <h6>配送先<h6><br>
+      <h6>支払方法<h6>
+      <h6>注文ステータス<h6>
+    </div>
+    <div class="input_text">
+      <h6><%= @order.customer.last_name + @order.customer.first_name %></h6>
+      <h6><%= @order.created_at.strftime('%Y/%m/%d') %></h6>
+      <h6><%= @order.shipping_postal%><%= @order.shipping_address %></h6>
+      <h6><%= @order.shipping_name %></h6>
+      <h6><%= @order.payment %></h6>
+      <%= form_with model: @order, url: admin_update_orders_path(@order.id), method: :patch do |f| %>
+        <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"),k]} %>
+        <%= f.submit '更新', class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="row">
-  <div class="col-10">
-<table class='table table-hover table-inverse'>
-  <tr>
-    <th>商品名</th>
-    <th>単価(税込）</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th>製作ステータス</th>
-  </tr>
-</table>
-  <% @details.each do |detail| %>
-
-    <div><%= detail.item.item_name %></div>
-    <div><%= detail.item.with_tax_price.to_s(:delimited) %></div>
-    <div><%= detail.amount %></div>
-    <div><%= (detail.item.with_tax_price * detail.amount).to_s(:delimited) %></div>
-    <!--<div><%#= detail.item.subtotal%></div>-->
-    <!--% @total +=  detail.item.subtotal %>-->
-  <%#= form_with model: detail, url: admin_order_order_detail_path(order_details.id), method: :patch do |f| %>
-    <!--<div><%#= f.select :item_status, Order.Detail.item_statuses.keys.map {|k| [I18n.t("enums.detail.item_status.#{k}"),k]} %></div>-->
-    <!--<div><%#= f.submit '更新', class:"btn btn-success" %></div>-->
-
-      <%# end %>
-
-  <% end %>
-</div>
-<div class="col-2">
-<table>
-  <tr>
-    <td>商品合計</td>
-    <td>送料</td>
-    <td>請求金額合計</td>
-  </tr>
-  <tr>
-    <td>
+  <div class="col-9">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+      </tr>
+    </thead>
+    <% @details.each do |detail| %>
+    <tbody>
+      <td><%= detail.item.item_name %></td>
+      <td><%= detail.item.with_tax_price.to_s(:delimited) %></td>
+      <td><%= detail.amount %></td>
+      <td><%= (detail.item.with_tax_price * detail.amount).to_s(:delimited) %></td>
+      <td>
+        <%= form_with model: detail, url: admin_order_order_detail_path(detail.id), method: :patch do |f| %>
+          <%= f.select :item_status, Detail.item_statuses.keys.map {|k| [I18n.t("enums.detail.item_status.#{k}"),k]} %>
+          <%= f.submit '更新', class:"btn btn-success" %></div>
+          <% end %>
+        <% end %>
+      </td>
+    </tbody>
+  </table>
+  </div>
+<div class="col-3">
+  <div class="field">
+    <div class="label">
+      <h6>商品合計<h6>
+      <h6>送料<h6>
+      <h6>請求金額合計<h6>
+    </div>
+    <div class="input_text">
      <% @details.each do |detail| %>
        <% @subtotal_price = @subtotal_price + detail.price %>
      <% end %>
      <%= @subtotal_price.to_s(:delimited) %>
-    </td>
-    <td><%= postage = 800 %></td>
-    <td><%= (@subtotal_price + postage).to_s(:delimited) %></td>
-  </tr>
-</table>
-</div>
+     <br><%= postage = 800 %>
+     <br><%= (@subtotal_price + postage).to_s(:delimited) %>
+    </div>
+  </div>
 </div>
