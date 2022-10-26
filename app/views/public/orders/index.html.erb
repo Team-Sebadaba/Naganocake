@@ -1,4 +1,7 @@
-<h4>注文履歴一覧</h4>
+ <div class="ml-5 mb-5">
+  <h4 class="caption">注文履歴一覧</h4>
+ </div>
+
 <div class = "row" >
  <div class = "col-12" >
   <table class = "table table-bordered">
@@ -13,10 +16,10 @@
      </tr>
    </thead>
 
-   <tbody>
+   <tbody class = "text-left">
    <% @orders.each do |order| %>
     <tr>
-     <td class = "text-center"><%= order.created_at.strftime('%Y/%m/%d') %></div></td>
+     <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
      <td>
        〒<%= order.shipping_postal %><br>
          <%= order.shipping_address %><br>
@@ -28,7 +31,7 @@
        <% end %>
      </td>
      <td>
-       <%= order.total %>
+       <%= order.total %>円
      </td>
      <td>
      <%= order.order_status_i18n %>
