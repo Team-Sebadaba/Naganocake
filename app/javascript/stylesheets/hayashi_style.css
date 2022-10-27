@@ -3,15 +3,17 @@
   font-size:20px;
 }
 
-/*views/見出し*/
-.caption {
-  display: inline-block;
-  padding: 1px 10px;
-  background-color: #eeeeee;
+.button {
+  width: 120px;
 }
 
-.table_title {
-  background-color: #eeeeee;
+.caption{
+  width: 50%;
+  text-align: center;
+}
+
+.item_index_link {
+  text-align: center;
 }
 
 /*入力フォーム*/
@@ -22,14 +24,11 @@
   display:flex;
   padding-bottom: 10px;
   width: 100%;
-  /*justify-content:space-around;*/
 }
 
 .label {
   display: inline-block;
   width: 30%;
-  /*text-align: right;*/
-  /*margin-right: 100px;*/
 }
 
 .input_text {
@@ -48,4 +47,8 @@
   width: 70%;
   text-align: center;
   margin-top: 20px;
+}
+
+.subtitle {
+  margin-right: 200px
 }
