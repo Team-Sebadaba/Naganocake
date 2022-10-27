@@ -1,33 +1,49 @@
-<h2>配送先登録/一覧</h2>
-<%= form_with model: @destination, url: destinations_path, method: :post, local: true do |f| %>
+<% if @destination.errors.any? %>
+  <%= @destination.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @destination.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-　<div class="field">
-   <%= f.label :郵便番号 %>
-   <em>(ハイフンなし)</em>
-   <%= f.text_field :postal %>
+<div class = "ml-5 mt-1 mb-4 ">
+ <h5 class="caption">配送先登録/一覧</h5>
+</div>
+ <%= form_with model: @destination, url: destinations_path, method: :post, local: true do |f| %>
+
+  <div class = "row">
+   <div class = "col-11" >
+    <table class = "table table-borderless" >
+     <tr>
+       <td><%= f.label :郵便番号 %>
+       <em>(ハイフンなし)</em></td>
+       <td><%= f.text_field :postal %></td>
+     </tr>
+     <tr>
+      <td> <%= f.label :住所 %></td>
+      <td><%= f.text_field :address, :size=>"46" %></td>
+     </tr>
+     <tr>
+      <td> <%= f.label :宛名 %></td>
+      <td> <%= f.text_field :name %></td>
+      <td><%= f.submit "新規登録",  class: "btn btn-success" %></td>
+     </tr>
+    </table>
+   </div>
   </div>
 
-  <div class="field">
-   <%= f.label :住所 %>
-   <%= f.text_field :address %>
-  </div>
+ <% end %>
 
-  <div class="field">
-   <%= f.label :宛名 %>
-   <%= f.text_field :name %>
-  </div>
-
-　<%= f.submit "新規登録",  class: "btn btn-success" %>
-
-  <% end %>
-
-  <div class>
-    <table>
+  <div class = "row">
+   <div class = "col-12" >
+    <table class = "table table-bordered">
       <thead>
         <tr>
           <th>郵便番号</th>
           <th>住所</th>
           <th>宛名</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -36,13 +52,12 @@
            <td><%= destination.postal %></td>
            <td><%= destination.address %></td>
            <td><%= destination.name %></td>
-           <td><%= link_to "編集する", edit_destination_path(destination.id), class:"btn btn-success" %></td>
-           <td><%= link_to "削除する", destroy_destination_path(destination.id), class:"btn btn-danger",method: :delete  %></td>
+           <td><%= link_to "編集する", edit_destination_path(destination.id), class:"btn btn-success" %>
+               <%= link_to "削除する", destroy_destination_path(destination.id), class:"btn btn-danger",method: :delete %>
+           </td>
          </tr>
         <% end %>
-
-
       </tbody>
-
     </table>
+   </div>
   </div>
