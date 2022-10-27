@@ -1,12 +1,16 @@
 <div class="row mb-5">
-  <div class="caption">
-   <h4>商品一覧</h4>
+  <div class="col-6">
+    <div class="caption">
+     <h4>商品一覧</h4>
+    </div>
   </div>
-  <div class="item_index_link">
-    <%= link_to new_admin_item_path do %>
-     アイコン<i class="fa-solid fa-circle-plus"></i>
-    <% end %>
-  </dov>
+  <div class="col-6">
+    <div class="item_index_link">
+      <%= link_to new_admin_item_path do %>
+       <%= image_tag 'plus.jpg' %>
+      <% end %>
+    </dov>
+  </div>
 </div>
 
 <table class='table table-hover table-inverse'>

@@ -12,6 +12,10 @@
   text-align: center;
 }
 
+.item_index_link {
+  text-align: center;
+}
+
 /*入力フォーム*/
 .email {
   width: 400px;
@@ -20,14 +24,11 @@
   display:flex;
   padding-bottom: 10px;
   width: 100%;
-  /*justify-content:space-around;*/
 }
 
 .label {
   display: inline-block;
   width: 30%;
-  /*text-align: right;*/
-  /*margin-right: 100px;*/
 }
 
 .input_text {
@@ -48,6 +49,6 @@
   margin-top: 20px;
 }
 
-h5 {
+.subtitle {
   margin-right: 200px
 }
