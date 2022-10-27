@@ -1,7 +1,5 @@
 <div class="row mb-5">
-  <div class="caption">
-   <h4>注文履歴一覧</h4>
-  </div>
+  <h4>注文履歴一覧<h4>
 </div>
 <table class='table table-hover table-inverse'>
   <thead>
@@ -22,13 +20,14 @@
        <%= order.customer.last_name + order.customer.first_name %>
       </td>
       <td>
+       <% @amount_total = 0 %>
        <% order.details.each do |detail| %>
          <% @amount_total = @amount_total + detail.amount %>
        <% end %>
        <%= @amount_total%>
       </td>
       <td>
-       <%#= order.details.item_status %>
+       <%= order.order_status_i18n %>
       </td>
     </tr>
    <% end %>

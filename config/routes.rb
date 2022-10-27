@@ -51,11 +51,12 @@ Rails.application.routes.draw do
   # admin(管理者側)
   namespace :admin do
     root :to => 'homes#top'
+    patch '/orders/:id' => 'orders#update', as: 'update_orders'
     resources :homes, only: [:top]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show, :update] do
+    resources :orders, only: [:show] do
     resources :order_details, only: [:update]
     end
   end
