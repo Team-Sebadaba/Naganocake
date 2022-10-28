@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   get '/orders' => 'public/orders#index'
   get '/orders/:id' => 'public/orders#show', as: 'show_orders'
 
-
   # items
   get '/items' => 'public/items#index'
   get '/items/:id' => 'public/items#show', as: 'show_items'
@@ -47,7 +46,6 @@ Rails.application.routes.draw do
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items, only: [:index, :update, :destroy, :create]
   end
-
 
 
   # admin(管理者側)

@@ -28,10 +28,6 @@ class Customer < ApplicationRecord
   def name_display
     last_name + ' ' + first_name
   end
-  
-  def active_for_authentication?
-    super && (is_deleted == false)
-  end
 
 
 end
