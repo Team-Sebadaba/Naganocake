@@ -1,7 +1,7 @@
 class Admin::HomesController < ApplicationController
   def top
     # @customers = Customer.all
-    @orders = Order.all.page(params[:page])
+    @orders = Order.order("created_at DESC").page(params[:page])
     @order = Order.new
     @details = Detail.all
   end
