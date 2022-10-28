@@ -1,30 +1,32 @@
+<div class="row justify-content-around">
+  <div class="col-9 px-5">
 <h2>新規会員登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
- <div class="field">
+  <div class="field">
    <%= f.label :名前 %>
    <%= f.label :last_name, "(姓)" %>
    <%= f.text_field :last_name, autofocus: true, required: true %>
    <%= f.label :first_name, "(名)" %>
    <%= f.text_field :first_name, autofocus: true, required: true %>
-</div>
+  </div>
 
-<div class="field">
+  <div class="field">
    <%= f.label :フリガナ %>
    <%= f.label :last_furigana, "(セイ)" %>
    <%= f.text_field :last_furigana, autofocus: true, required: true %>
    <%= f.label :first_furigana, "(メイ)" %>
    <%= f.text_field :first_furigana, autofocus: true, required: true %>
-</div>
+  </div>
 
   <div class="field">
    <%= f.label :メールアドレス %>
    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-<div class="field">
+  <div class="field">
     <%= f.label :郵便番号 %>
     <em>(ハイフンなし)</em>
     <%= f.text_field :postal, autofocus: true, autocomplete: "postal" %>
@@ -61,4 +63,6 @@
 <% end %>
 
 <h4>既に登録済みの方</h4>
+  <div class="sign_up_link mb-5">
    <%= render "public/shared/links" %>
+ </div>

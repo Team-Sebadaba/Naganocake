@@ -1,6 +1,9 @@
 <div class="row mb-5">
-   <h4>商品詳細</h4>
+  <div class="col-md-5 offset-md-1">
+    <h4><span class="title" style="background-color: #f5f5f5">商品詳細</span></h4>
+  </div>
 </div>
+
 <div class="row">
   <div class="col-3">
     <%= image_tag @item.get_image(200,160) %>
@@ -18,7 +21,7 @@
         <h6><%= @item.item_name %></h6>
         <h6><%= @item.item_introduction %></h6>
         <h6><%= @item.genre.name %></h6>
-        <h6><%= @item.non_taxed %></h6>
+        <h6><%= @item.with_tax_price.to_s(:delimited) %> (<%= @item.non_taxed.to_s(:delimited) %>) 円</h6>
         <h6>
           <% if @item.is_active == true %>
             <h5 class="text-success">販売中</h5>
