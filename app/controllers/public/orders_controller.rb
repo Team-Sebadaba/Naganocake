@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @customer = Customer.find(current_customer.id)
     @destinations = current_customer.destinations.all
+    @destination = Destination.new
   end
 
   def index
@@ -28,6 +29,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.save
       # 今まではformから送信していたデータを手動で送る
+      # 会員側ではdetailsコントローラは用意しない為。
       current_customer.cart_items.each do |cart_item|
         detail = Detail.new
         detail.order_id = @order.id
@@ -71,6 +73,15 @@ class Public::OrdersController < ApplicationController
       @order.shipping_postal = destination.postal
       @order.shipping_address = destination.address
       @order.shipping_name = destination.name
+    elsif params[:order][:dest] == '2'
+        @destination = Destination.new
+        @destination.postal = @order.shipping_postal
+        @destination.address = @order.shipping_address
+        @destination.name = @order.shipping_name
+        @destination.customer_id = current_customer.id
+      unless @destination.save
+        render :new
+      end
     end
     @total = 0
     @cart_items = current_customer.cart_items.all
