@@ -1,4 +1,19 @@
-<h1>配送先編集</h1>
+<% if @destination.errors.any? %>
+  <%= @destination.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @destination.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class = "row mb-5">
+ <div class="col-md-10 offset-md-1">
+  <h4><span class="title" style="background-color: #f5f5f5">配送先編集</span></h4>
+ </div>
+</div>
+
+
  <%= form_with model: @destination, url: update_destination_path, method: :patch, local: true do |f| %>
 
 　<div class="field">

@@ -11,8 +11,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    #@order = order.find(params[:id])
-    #@orders = current_customer.orders.all(params[:page]).reverse_order
+
   end
 
   def show

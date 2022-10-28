@@ -18,14 +18,14 @@
 
     <div class="row">
       <div class="col-md-12 mt-3">
-        <h3>新着商品</h3>
+        <h3 class="title" style="font-weight: bold;">新着商品</h3>
       </div>
       <% @items.each do |item| %>
         <div class="col-md-3 my-3">
           <%= link_to show_items_path(item.id) do %>
             <%= image_tag item.get_image(120,90) %><br>
-            <%= item.item_name %><br>
-            ¥<%= item.non_taxed.to_s(:delimited) %>
+            <p class="title" style="font-weight: bold;"><%= item.item_name %></p>
+            <p class="title" style="font-weight: bold;">¥<%= item.with_tax_price.to_s(:delimited) %></p>
           <% end %>
         </div>
       <% end %>

@@ -18,7 +18,7 @@
         <h6><%= @item.item_name %></h6>
         <h6><%= @item.item_introduction %></h6>
         <h6><%= @item.genre.name %></h6>
-        <h6><%= @item.non_taxed %></h6>
+        <h6><%= @item.with_tax_price.to_s(:delimited) %> (<%= @item.non_taxed.to_s(:delimited) %>) 円</h6>
         <h6>
           <% if @item.is_active == true %>
             <h5 class="text-success">販売中</h5>
