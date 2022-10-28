@@ -1,40 +1,52 @@
-<div class = "container">
- <div class="row">
-  <h2 class="mb-5">商品編集</h2>
- </div>
- <div class="row">
+<div class="row mb-5">
+  <div class="col-md-5 offset-md-1">
+    <h4><span class="title" style="background-color: #f5f5f5">商品編集</h4>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
   <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-    <dev class="field colspan mr-5">
-      <h4>商品画像</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-    </dev>
-    <div class="field colspan mr-5">
-      <h4>商品名</h4>
-      <%= f.text_field :item_name %>
-    </div>
-    <div class="field colspan mr-5">
-      <h4>商品説明</h4>
-      <%= f.text_area :item_introduction %>
-    </div>
-    <div class="field colspan mr-5">
-      <h4>ジャンル</h4>
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
-    </div>
-    <div class="field colspan mr-5">
-      <h4>税抜価格</h4>
-      <%= f.text_field :non_taxed %>円
-    </div>
-     <div class="field colspan mr-5">
-      <h4>販売ステータス</h4>
-      <%= f.radio_button :is_active, true %>
-      <%= f.label :販売中%>
-      <%= f.radio_button :is_active, false %>
-      <%= f.label :販売停止中, false %>
-    </div>
-     <div class= "action">
+
+    <table class="table table-borderless">
+
+      <tr>
+        <td class="col-md-3 subtitle">商品画像</td>
+        <td class="col-md-3"><%= f.file_field :image, accept: "image/*" %></td>
+      </tr>
+      <tr>
+        <td class="col-md-3 subtitle">商品名</td>
+        <td class="col-md-5"><%= f.text_field :item_name %></td>
+      </tr>
+      <tr>
+        <td class="col-md-3 subtitle">商品説明</td>
+        <td class="col-md-3"><%= f.text_area :item_introduction %></td>
+      </tr>
+      <tr>
+        <td class="col-md-3 subtitle">ジャンル</td>
+        <td class="col-md-3"><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %></td>
+      </tr>
+      <tr>
+        <td class="col-md-3 subtitle">税抜価格</td>
+        <td class="col-md-3"><%= f.text_field :non_taxed %>円</td>
+      </tr>
+      <tr>
+        <td class="col-md-3 subtitle">販売ステータス</td>
+        <td class="col-md-3">
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :販売中%>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :販売停止中, false %>
+        </td>
+      </tr>
+    </table>
+
+    <div class= "col-md-8 offset-md-4 action">
       <%= f.submit '変更を保存', class:"btn btn-success" %>
-     </div>
+    </div>
+    <div class= "col-md-8 offset-md-4 action">
       <%= link_to "削除", admin_item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
   <% end %>
   </div>
 </div>
