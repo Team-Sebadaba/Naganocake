@@ -1,0 +1,49 @@
+<div class="row">
+
+  <div class="col-md-9">
+
+    <div class="row">
+      <div class="col-md-12 card">
+        <img class="card-img" src="assets/naganocake.jpg" alt="">
+          <div class="card-img-overlay">
+            <p class="cover-text">
+              ようこそ、ながのCAKEへ。<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員ではない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </p>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-3">
+        <h3 class="title" style="font-weight: bold;">新着商品</h3>
+      </div>
+      <% @items.each do |item| %>
+        <div class="col-md-3 my-3">
+          <%= link_to show_items_path(item.id) do %>
+            <%= image_tag item.get_image(120,90) %><br>
+            <p class="title" style="font-weight: bold;"><%= item.item_name %></p>
+            <p class="title" style="font-weight: bold;">¥<%= item.with_tax_price.to_s(:delimited) %></p>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="col-md-12 mb-3">
+        <h6 class="text-right"><%= link_to "全ての商品を見る >", items_path %></h6>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-3">
+    <ul class="list-group">
+      <h5>ジャンル一覧</h5>
+        <% @genres.each do |genre| %>
+          <li class="list-group-item">
+            <%= genre.name %>
+          </li>
+        <% end %>
+    </ul>
+  </div>
+
+</div>

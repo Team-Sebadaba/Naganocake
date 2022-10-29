@@ -1,0 +1,31 @@
+<div class = "row mb-5">
+  <div class="col-md-10 offset-md-1">
+    <h4><span class="title" style="background-color: #f5f5f5">退会確認画面</span></h4>
+  </div>
+</div>
+
+<div class = "row">
+  <h5 class = "mx-auto" style="font-weight: bold;">本当に退会しますか？</h5>
+</div>
+<div class = "row">
+  <div class="mx-auto text-center">
+    <p>
+    退会すると、会員登録情報や<br>
+    これまでの購入履歴が閲覧できなくなります。<br>
+    退会する場合は、「退会する」をクリックしてください。
+    </p>
+  </div>
+</div>
+
+<div class = "row">
+  <div class = "col text-center">
+    <%= link_to "退会しない", customers_path(current_customer.id), class: "btn btn-primary" %>
+  </div>
+  <div class = "col text-center">
+    <%= link_to "退会する", withdraw_customer_path(current_customer.id), method: :patch, class: "btn btn-danger", data: { confilm: "本当に退会しますか？" } %>
+  </div>
+  <!--%= form_with model: @customer, url: customers_withdraw_path, method: :patch do |f| %>-->
+  <!--%= f.hidden_field :is_deleted, :value => true %>-->
+  <!--<h4>%= f.submit "退会する", class: "btn btn-danger" %></h4>-->
+  <!--% end %>-->
+</div>

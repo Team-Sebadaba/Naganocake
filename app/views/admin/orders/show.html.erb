@@ -1,0 +1,76 @@
+<div class="row mb-5">
+  <div class="col-md-9 offset-md-1">
+    <h4><span class="title" style="background-color: #f5f5f5">注文履歴詳細</span></h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="field">
+    <div class="label">
+      <h6>購入者<h6>
+      <h6>注文日<h6>
+      <h6>配送先<h6><br>
+      <h6>支払方法<h6>
+      <h6>注文ステータス<h6>
+    </div>
+    <div class="input_text">
+      <h6><%= @order.customer.last_name + @order.customer.first_name %></h6>
+      <h6><%= @order.created_at.strftime('%Y/%m/%d') %></h6>
+      <h6><%= @order.shipping_postal%><%= @order.shipping_address %></h6>
+      <h6><%= @order.shipping_name %></h6>
+      <h6><%= @order.payment_i18n %></h6>
+      <%= form_with model: @order, url: admin_update_orders_path(@order.id), method: :patch do |f| %>
+        <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"),k]} %>
+        <%= f.submit '更新', class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-9">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @details.each do |detail| %>
+    <tr>
+      <td><%= detail.item.item_name %></td>
+      <td><%= detail.item.with_tax_price.to_s(:delimited) %></td>
+      <td><%= detail.amount %></td>
+      <td><%= (detail.item.with_tax_price * detail.amount).to_s(:delimited) %></td>
+      <td>
+
+        <%= form_with model: detail, url: admin_order_order_detail_path(@order,detail.id), method: :patch do |f| %>
+          <%= f.select :item_status, Detail.item_statuses.keys.map {|k| [I18n.t("enums.detail.item_status.#{k}"),k]} %>
+          <%= f.submit '更新', class:"btn btn-success" %></div>
+          <% end %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
+  <div class="col-3 d-flex align-items-end">
+  <div class="field">
+    <div class="label">
+      <h6>商品合計<h6>
+      <h6>送料<h6>
+      <h6>請求金額合計<h6>
+    </div>
+    <div class="input_text">
+     <% @details.each do |detail| %>
+       <% @subtotal_price = @subtotal_price + detail.price %>
+     <% end %>
+     <%= @subtotal_price.to_s(:delimited) %>
+     <br><%= postage = 800 %>
+     <br><%= (@subtotal_price + postage).to_s(:delimited) %>
+    </div>
+  </div>
+  </div>

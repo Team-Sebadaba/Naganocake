@@ -1,0 +1,18 @@
+ja:  # 日本語の設定を行う
+    enums:  # enumの設定を行う
+      detail: # [モデル名]:
+        item_status:  # [カラム名]:
+          impossible_making: "製作不可"# [enumで番号と紐付けた要素]
+          waiting: "製作待ち"
+          maiking: "製作中"
+          complete: "製作完了"
+      order:
+        payment: 
+          credit_card: "クレジットカード" 
+          transfer: "銀行振込"
+        order_status:
+          waiting_payment: "入金待ち"
+          payment: "入金確認"
+          maiking: "製作中"
+          ready_to_ship: "発送準備中"
+          item_shipping: "発送済み"
