@@ -27,12 +27,12 @@ class Admin::ItemsController < ApplicationController
     @item.update(item_params)
     redirect_to admin_items_path
   end
-  
-  # def destroy
-  #   @item = Item.find(params[:id])
-  #   @item.destroy
-  #   redirect_to admin_items_patho
-  # end
+
+   def destroy
+    @item = Item.find(params[:id])
+     @item.destroy
+     redirect_to admin_items_path
+   end
 
   private
   # ストロングパラメータ

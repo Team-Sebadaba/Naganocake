@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     root :to => 'homes#top'
     patch '/orders/:id' => 'orders#update', as: 'update_orders'
     resources :homes, only: [:top]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show] do
