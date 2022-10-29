@@ -1,73 +1,68 @@
-<div class="row ml-2">
-  <div class="caption">
-   <h4>新規会員登録</h4>
-  </div>
-</div>
-
- <div class="row justify-content-around">
+<div class="row justify-content-around">
   <div class="col-9 px-5">
-     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-     <%= render "public/shared/error_messages", resource: resource %>
+<h2>新規会員登録</h2>
 
- 　<div class="field">
-    <div class="label"><%= f.label :名前 %></div>
-    <div class="input_text">
-     <%= f.text_field :last_name, autofocus: true, required: true %>
-     <%= f.text_field :first_name, autofocus: true, required: true %>
-    </div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
+  <div class="field">
+   <%= f.label :名前 %>
+   <%= f.label :last_name, "(姓)" %>
+   <%= f.text_field :last_name, autofocus: true, required: true %>
+   <%= f.label :first_name, "(名)" %>
+   <%= f.text_field :first_name, autofocus: true, required: true %>
   </div>
 
   <div class="field">
-    <div class="label"><%= f.label :フリガナ %></div>
-    <div class="input_text">
-     <%= f.text_field :last_furigana, autofocus: true, required: true %>
-     <%= f.text_field :first_furigana, autofocus: true, required: true %>
-    </div>
+   <%= f.label :フリガナ %>
+   <%= f.label :last_furigana, "(セイ)" %>
+   <%= f.text_field :last_furigana, autofocus: true, required: true %>
+   <%= f.label :first_furigana, "(メイ)" %>
+   <%= f.text_field :first_furigana, autofocus: true, required: true %>
   </div>
 
   <div class="field">
-    <div class="label"><%= f.label :メールアドレス %></div>
-    <div class="input_text"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %></div>
+   <%= f.label :メールアドレス %>
+   <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <div class="label"><%= f.label :郵便番号 %><em>(ハイフンなし)</em></div>
-    <div class="input_text"><%= f.text_field :postal, autofocus: true, autocomplete: "postal" %></div>
+    <%= f.label :郵便番号 %>
+    <em>(ハイフンなし)</em>
+    <%= f.text_field :postal, autofocus: true, autocomplete: "postal" %>
   </div>
 
   <div class="field">
-    <div class="label"><%= f.label :住所 %></div>
-    <div class="input_text"><%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>"46" %></div>
+   <%= f.label :住所 %>
+   <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
   </div>
 
   <div class="field">
-    <div class="label"><%= f.label :電話番号 %><em>(ハイフンなし)</em></div>
-    <div class="input_text"><%= f.text_field :tel, autofocus: true, autocomplete: "tel" %></div>
+   <%= f.label :電話番号 %>
+   <em>(ハイフンなし)</em>
+   <%= f.text_field :tel, autofocus: true, autocomplete: "tel" %>
   </div>
 
-   <div class="field">
-    <div class="label"><%= f.label :パスワード %>
-     <% if @minimum_password_length %>
+  <div class="field">
+   <%= f.label :パスワード %>
+   <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %>
-    </div>
-    <div class="input_text"><%= f.password_field :password, autocomplete: "current-password" %> </div>
-   </div>
-
-   <div class="field">
-    <div class="label"><%= f.label :パスワード %><em>(確認用)</em></div>
-    <div class="input_text"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
-    <%= f.submit "新規登録", class:"btn btn-success" %>
-   </div>
-
    <% end %>
-   </div>
+   <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
- <div class="caption">
-  <h4>既に登録済みの方</h4>
- </div>
+  <div class="field">
+   <%= f.label :パスワード %>
+   <em>(確認用)</em>
+   <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
 
- <div class="sign_up_link">
-  <%= render "public/shared/links" %>
+  <div class="actions">
+   <%= f.submit "新規登録",  class: "btn btn-success" %>
+  </div>
+<% end %>
+
+<h4>既に登録済みの方</h4>
+  <div class="sign_up_link mb-5">
+   <%= render "public/shared/links" %>
  </div>

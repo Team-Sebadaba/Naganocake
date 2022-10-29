@@ -1,5 +1,7 @@
 <div class="row mb-5">
-   <h3>管理者ログイン</h3>
+  <div class="col-md-9 offset-md-1">
+    <h4><span class="title" style="background-color: #f5f5f5">管理者ログイン</span></h4>
+  </div>
 </div>
 
 <div class="row justify-content-around">
@@ -14,7 +16,7 @@
       <div class="input_text"><%= f.password_field :password, autocomplete: "current-password", size: 40 %></div>
     </div>
     <div class="actions">
-      <%= f.submit "ログイン", class:"button" %>
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
       <%= render "admin/shared/links" %>
     </div>
   <% end %>

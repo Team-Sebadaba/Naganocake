@@ -1,19 +1,19 @@
 <div class="row">
 
-  <div class="col-md-10">
+  <div class="col-md-9">
 
     <div class="row">
       <div class="col-md6 mb-5">
-        <img src="assets/chocolatecake3.jpg" alt="">
         <%= image_tag @item.get_image(400,200) %>
       </div>
 
-    　<div class="col-md-6 my-5">
-        <h4><%= @item.item_name %></h4>
-        <p><%= @item.item_introduction %></p>
-        <span>¥<%= @item.non_taxed.to_s(:delimited) %></span>
-        <
-        
+    　<div class="col-md-6 mb-5">
+        <h3 class="title" style="font-weight: bold;"><%= @item.item_name %></h4>
+        <h4><%= @item.item_introduction %></p>
+        <br>
+        <h4 class="title" style="font-weight: bold;">¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</h4>
+        <br>
+
           <% if @item.is_active == true %>
 
             <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
@@ -33,7 +33,7 @@
     <div></div>
 
 　</div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <%= render 'genres_list', genres: @genres %>
   </div>
 </div>
