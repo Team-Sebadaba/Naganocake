@@ -194,7 +194,7 @@ git clone [git@github.com:Team-Sebadaba/Naganocake.git]
 
 # 開発者
 
-*西村 渉(にし)*<br>
-*林 由樹乃(ゆっきー)*<br>
-*長谷川 蓮(はせれん)*<br>
-*大津 円香(ねえさん)*
+*にし*<br>
+*ゆっきー*<br>
+*はせれん*<br>
+*ねえさん*
